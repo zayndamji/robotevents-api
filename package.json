@@ -2,7 +2,15 @@
   "name": "robotevents-api",
   "version": "0.1.0",
   "description": "A mask for the RobotEvents API.",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "author": "Zaypers",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
 }
