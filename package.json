@@ -1,0 +1,11 @@
+{
+  "name": "robotevents-api",
+  "version": "0.1.0",
+  "description": "A mask for the RobotEvents API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Zaypers",
+  "license": "ISC"
+}
