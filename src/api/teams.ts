@@ -15,6 +15,16 @@ export const programs = {
   "VAIC": 57
 }
 
+/**
+ * Fetches team by number and program.
+ * @param number Team Number
+ * @param program Program
+ *
+ * @example
+ * const team = await robotevents.teams.getByNumber('392X');
+ * const team = await robotevents.teams.getByNumber('392X', 'VRC');
+ *
+ */
 export async function getByNumber(number: string, program: string = ""): Promise<Team> {
   let reqStr = `teams?number%5B%5D=${number}`
 
@@ -29,6 +39,14 @@ export async function getByNumber(number: string, program: string = ""): Promise
   return new Team()
 }
 
+/**
+ * Fetches team by RobotEvents id.
+ * @param id RobotEvents ID
+ *
+ * @example
+ * const team = await robotevents.teams.getByNumber(136072);
+ *
+ */
 export async function getById(id: number): Promise<Team> {
   let reqStr = `teams/${id}`
   
