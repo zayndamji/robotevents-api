@@ -1,4 +1,5 @@
-import request from "../request"
+import request from "../funcs/request"
+import capitalizeFirst from "../funcs/capitalizeFirst"
 import { programs, letters } from "../data"
 
 /**
@@ -72,10 +73,6 @@ export type TeamData = {
   }
 }
 
-export type TeamEvent = {
-  sku: String | null | undefined
-}
-
 /**
  * Contains methods mirrored from RobotEvents API for /teams.
  */
@@ -116,22 +113,38 @@ export class Team {
    * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/events
    * 
    * @example
-   * const team = await robotevents.teams.getByNumber('392X');
+   * const team = await robotevents.teams.getByNumber('23900B', 'VRC');
    * const events = await team.events({
-   *  sku: 'RE-VRC-22-7950'
+   *  sku: 'RE-VRC-21-5434',
+   *  level: 'World'
    * });
    *
    */
   async events(options: {
-    sku: String | null | undefined
-  } = { sku: undefined }): Promise<JSON> {
+    sku: String | null | undefined,
+    level: String | null | undefined
+  } = { sku: undefined, level: undefined }): Promise<JSON> {
     let firstPerameter: boolean = true
-
     let reqStr: string = `teams/${this.id}/events`
+
     if (options.sku != undefined) {
-      if (firstPerameter) reqStr += `?sku%5B%5D=${options.sku}`
+      if (firstPerameter) {
+        reqStr += `?sku%5B%5D=${options.sku}`
+        firstPerameter = false
+      }
       else reqStr += `&sku%5B%5D=${options.sku}`
     }
+
+    if (options.level != undefined) {
+      options.level = capitalizeFirst(options.level)
+      if (firstPerameter) {
+        reqStr += `?level%5B%5D=${options.level}`
+        firstPerameter = false
+      }
+      else reqStr += `&level%5B%5D=${options.level}`
+    }
+
+    console.log(reqStr)
 
     return (await request(reqStr)).data
   }
