@@ -1,5 +1,5 @@
 import request from "../request"
-import { programs } from "../data/programs"
+import { programs, letters } from "../data"
 
 /**
  * Fetches team by number and program.
@@ -11,19 +11,7 @@ import { programs } from "../data/programs"
  * const team = await robotevents.teams.getByNumber('392X', 'VRC');
  *
  */
-export async function getByNumber(number: string, program: string = ""): Promise<Team> {
-  let reqStr = `teams?number%5B%5D=${number}`
-
-  // @ts-ignore
-  if (program in programs) reqStr += `&program%5B%5D=${programs[program]}`
-  
-  const data = (await request(reqStr)).data
-
-  if (data[0] != undefined) {
-    return new Team(data[0])
-  }
-  return new Team()
-}
+export async function get(number: string, program: string): Promise<Team>
 
 /**
  * Fetches team by RobotEvents id.
@@ -33,14 +21,30 @@ export async function getByNumber(number: string, program: string = ""): Promise
  * const team = await robotevents.teams.getByNumber(136072);
  *
  */
-export async function getById(id: number): Promise<Team> {
-  let reqStr = `teams/${id}`
-  
-  const data = (await request(reqStr))
+export async function get(id: number): Promise<Team>
 
-  if (data != undefined) {
-    return new Team(data)
+export async function get(idNumber: any, program: string = ""): Promise<Team> {
+  let
+    reqStr: string, 
+    id: boolean = false, 
+    data: JSON
+  
+  idNumber = `${idNumber}`
+
+  if (!letters.test(idNumber.toLowerCase())) {
+    id = true
+    reqStr = `teams/${idNumber}`
   }
+  else reqStr = `teams?number%5B%5D=${idNumber}`
+  
+  // @ts-ignore
+  if (program in programs) reqStr += `&program%5B%5D=${programs[program]}`
+    
+  data = (await request(reqStr))
+  
+  if (id) { return new Team(data) }
+  // @ts-ignore
+  else if (data.data[0] != undefined) { return new Team(data.data[0]) }
   return new Team()
 }
 
