@@ -68,6 +68,9 @@ export type TeamData = {
   }
 }
 
+/**
+ * Contains methods mirrored from RobotEvents API for /teams.
+ */
 export class Team {
   id = 0
 
@@ -99,22 +102,62 @@ export class Team {
     }
   }
 
+  /**
+   * Fetches events of a team.
+   * 
+   * @example
+   * const team = await robotevents.teams.getByNumber('392X');
+   * const events = await team.events();
+   *
+   */
   async events(): Promise<JSON> {
     return (await request(`teams/${this.id}/events`)).data
   }
 
+  /**
+   * Fetches matches of a team.
+   * 
+   * @example
+   * const team = await robotevents.teams.getByNumber('392X');
+   * const matches = await team.matches();
+   *
+   */
   async matches(): Promise<JSON> {
     return (await request(`teams/${this.id}/matches`)).data
   }
 
+  /**
+   * Fetches rankings of a team.
+   * 
+   * @example
+   * const team = await robotevents.teams.getByNumber('392X');
+   * const rankings = await team.rankings();
+   *
+   */
   async rankings(): Promise<JSON> {
     return (await request(`teams/${this.id}/rankings`)).data
   }
 
+  /**
+   * Fetches skills of a team.
+   * 
+   * @example
+   * const team = await robotevents.teams.getByNumber('392X');
+   * const skills = await team.skills();
+   *
+   */
   async skills(): Promise<JSON> {
     return (await request(`teams/${this.id}/skills`)).data
   }
 
+  /**
+   * Fetches awards of a team.
+   * 
+   * @example
+   * const team = await robotevents.teams.getByNumber('392X');
+   * const awards = await team.awards();
+   *
+   */
   async awards(): Promise<JSON> {
     return (await request(`teams/${this.id}/awards`)).data
   }
