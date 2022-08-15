@@ -72,6 +72,10 @@ export type TeamData = {
   }
 }
 
+export type TeamEvent = {
+  sku: String | null | undefined
+}
+
 /**
  * Contains methods mirrored from RobotEvents API for /teams.
  */
@@ -109,13 +113,27 @@ export class Team {
   /**
    * Fetches events of a team.
    * 
+   * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/events
+   * 
    * @example
    * const team = await robotevents.teams.getByNumber('392X');
-   * const events = await team.events();
+   * const events = await team.events({
+   *  sku: 'RE-VRC-22-7950'
+   * });
    *
    */
-  async events(): Promise<JSON> {
-    return (await request(`teams/${this.id}/events`)).data
+  async events(options: {
+    sku: String | null | undefined
+  } = { sku: undefined }): Promise<JSON> {
+    let firstPerameter: boolean = true
+
+    let reqStr: string = `teams/${this.id}/events`
+    if (options.sku != undefined) {
+      if (firstPerameter) reqStr += `?sku%5B%5D=${options.sku}`
+      else reqStr += `&sku%5B%5D=${options.sku}`
+    }
+
+    return (await request(reqStr)).data
   }
 
   /**
