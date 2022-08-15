@@ -15,11 +15,72 @@ const programs = {
   "VAIC": 57
 }
 
-export async function get(number: string, program: string = ""): Promise<JSON> {
+export async function get(number: string, program: string = ""): Promise<Team> {
   let reqStr = `teams?number%5B%5D=${number}`
 
   // @ts-ignore
   if (program in programs) reqStr += `&program%5B%5D=${programs[program]}`
+  
+  const data = (await request(reqStr)).data
 
-  return await request(reqStr)
+  if (data[0] != undefined) {
+    return new Team(data[0])
+  }
+  return new Team()
+}
+
+type TeamData = {
+  id: Number,
+
+  number: String
+  team_name: String
+  robot_name: String | null
+  organization: String
+  registered: Boolean
+
+  program: { id: Number, name: String, code: String }
+  grade: String
+
+  location: {
+    venue: String | null,
+    address_1: String | null,
+    address_2: String | null,
+    city: String | null,
+    region: String | null,
+    postcode: String | null,
+    country: String | null,
+    coordinates: { lat: Number, lon: Number }
+  }
+}
+
+class Team {
+  id = 0
+
+  number = ''
+  team_name = ''
+  robot_name = ''
+  organization = ''
+  registered = false
+
+  program = { id: 0, name: '', code: '' }
+  grade = ''
+
+  location = {
+    venue: '',
+    address_1: '',
+    address_2: '',
+    city: '',
+    region: '',
+    postcode: '',
+    country: '',
+    coordinates: { lat: 0, lon: 0 }
+  }
+
+  constructor(teamData: TeamData | Object = {}) {
+    const entries: any = Object.entries(teamData)
+    for (let i = 0; i < entries.length; i++) {
+      // @ts-ignore
+      this[entries[i][0]] = entries[i][1]
+    }
+  }
 }
