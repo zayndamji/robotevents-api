@@ -26,10 +26,10 @@ npm install dotenv
 
 In a .env file in the directory with your app.js file, add your RobotEvents token with the key of 'TOKEN'.  
 
-<img src="./assets/source-dir.png" style="width: 14em"><br>
+<img src="https://github.com/zaypers/robotevents-api/raw/main/assets/source-dir.png" style="width: 14em"><br>  
 
 Example (this is not a real token):  
-<img src="./assets/dotenv-token.png">  
+<img src="https://github.com/zaypers/robotevents-api/raw/main/assets/dotenv-token.png">  
 
 In your ``app.js`` or ``index.js`` file, start by writing:  
 ```javascript

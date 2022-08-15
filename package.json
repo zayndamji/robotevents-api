@@ -1,7 +1,7 @@
 {
   "name": "robotevents-api",
-  "version": "0.1.0",
-  "description": "A mask for the RobotEvents API.",
+  "version": "0.1.1",
+  "description": "A wrapper for the RobotEvents API.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "Zaypers",
