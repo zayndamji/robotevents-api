@@ -95,4 +95,8 @@ class Team {
   async rankings(): Promise<JSON> {
     return (await request(`teams/${this.id}/rankings`)).data
   }
+
+  async skills(): Promise<JSON> {
+    return (await request(`teams/${this.id}/skills`)).data
+  }
 }
