@@ -83,4 +83,8 @@ class Team {
       this[entries[i][0]] = entries[i][1]
     }
   }
+
+  async events(): Promise<JSON> {
+    return (await request(`teams/${this.id}/events`)).data
+  }
 }
