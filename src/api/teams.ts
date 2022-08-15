@@ -15,7 +15,7 @@ export const programs = {
   "VAIC": 57
 }
 
-export async function get(number: string, program: string = ""): Promise<Team> {
+export async function getByNumber(number: string, program: string = ""): Promise<Team> {
   let reqStr = `teams?number%5B%5D=${number}`
 
   // @ts-ignore
@@ -25,6 +25,17 @@ export async function get(number: string, program: string = ""): Promise<Team> {
 
   if (data[0] != undefined) {
     return new Team(data[0])
+  }
+  return new Team()
+}
+
+export async function getById(id: number): Promise<Team> {
+  let reqStr = `teams/${id}`
+  
+  const data = (await request(reqStr))
+
+  if (data != undefined) {
+    return new Team(data)
   }
   return new Team()
 }
