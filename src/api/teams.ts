@@ -1,6 +1,6 @@
 import request from "../request"
 
-const programs = {
+export const programs = {
   "VRC": 1,
   "VEXU": 4,
   "WORKSHOP": 37,
@@ -29,7 +29,7 @@ export async function get(number: string, program: string = ""): Promise<Team> {
   return new Team()
 }
 
-type TeamData = {
+export type TeamData = {
   id: Number,
 
   number: String
@@ -53,7 +53,7 @@ type TeamData = {
   }
 }
 
-class Team {
+export class Team {
   id = 0
 
   number = ''
