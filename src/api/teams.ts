@@ -99,4 +99,8 @@ class Team {
   async skills(): Promise<JSON> {
     return (await request(`teams/${this.id}/skills`)).data
   }
+
+  async awards(): Promise<JSON> {
+    return (await request(`teams/${this.id}/awards`)).data
+  }
 }
