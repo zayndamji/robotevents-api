@@ -1,12 +1,25 @@
 import request from "../request"
 
-export async function get(number: String, program: String = ""): Promise<JSON> {
+const programs = {
+  "VRC": 1,
+  "VEXU": 4,
+  "WORKSHOP": 37,
+  "VIQC": 41,
+  "NRL": 43,
+  "ADC": 44,
+  "TVRC": 46,
+  "TIQC": 47,
+  "VRAD": 51,
+  "BellAVR": 55,
+  "FAC": 56,
+  "VAIC": 57
+}
+
+export async function get(number: string, program: string = ""): Promise<JSON> {
   let reqStr = `teams?number%5B%5D=${number}`
 
-  if (program == 'VRC') reqStr += `&program%5B%5D=1`
-  else if (program == 'VEXU') reqStr += `&program%5B%5D=4`
-  else if (program == 'VIQC') reqStr += `&program%5B%5D=41`
-  else if (program == 'WORKSHOP') reqStr += `&program%5B%5D=37`
+  // @ts-ignore
+  if (program in programs) reqStr += `&program%5B%5D=${programs[program]}`
 
   return await request(reqStr)
 }
