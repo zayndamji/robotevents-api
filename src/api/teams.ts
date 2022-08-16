@@ -1,6 +1,6 @@
 import request from "../funcs/request"
 import capitalizeFirst from "../funcs/capitalizeFirst"
-import { programs, letters } from "../data"
+import { programs, letters } from "../data/index"
 
 /**
  * Fetches team by number and program.
@@ -26,27 +26,29 @@ export async function get(id: number): Promise<Team>
 
 export async function get(idNumber: any, program: string = ""): Promise<Team> {
   let
-    reqStr: string, 
-    id: boolean = false, 
+    reqUrl: String = '',
+    reqArgs: String[] = [],
+    id: Boolean = false, 
     data: JSON
   
   idNumber = `${idNumber}`
 
   if (!letters.test(idNumber.toLowerCase())) {
     id = true
-    reqStr = `teams/${idNumber}`
+    reqUrl = `teams/${idNumber}`
   }
-  else reqStr = `teams?number%5B%5D=${idNumber}`
+  else {
+    reqUrl = `teams`
+    reqArgs.push(`number%5B%5D=${idNumber}`)
+  }
   
   // @ts-ignore
-  if (program in programs) reqStr += `&program%5B%5D=${programs[program]}`
+  if (program in programs) reqArgs.push(`program%5B%5D=${programs[program]}`)
     
-  data = (await request(reqStr))
+  data = await request(reqUrl, reqArgs)
   
-  if (id) { return new Team(data) }
   // @ts-ignore
-  else if (data.data[0] != undefined) { return new Team(data.data[0]) }
-  return new Team()
+  return new Team(data[0])
 }
 
 export type TeamData = {
@@ -124,29 +126,17 @@ export class Team {
     sku: String | null | undefined,
     level: String | null | undefined
   } = { sku: undefined, level: undefined }): Promise<JSON> {
-    let firstPerameter: boolean = true
-    let reqStr: string = `teams/${this.id}/events`
+    let reqUrl: string = `teams/${this.id}/events`
+    let reqArgs: string[] = []
 
-    if (options.sku != undefined) {
-      if (firstPerameter) {
-        reqStr += `?sku%5B%5D=${options.sku}`
-        firstPerameter = false
-      }
-      else reqStr += `&sku%5B%5D=${options.sku}`
-    }
+    if (options.sku != undefined) reqArgs.push(`sku%5B%5D=${options.sku}`)
 
     if (options.level != undefined) {
       options.level = capitalizeFirst(options.level)
-      if (firstPerameter) {
-        reqStr += `?level%5B%5D=${options.level}`
-        firstPerameter = false
-      }
-      else reqStr += `&level%5B%5D=${options.level}`
+      reqArgs.push(`level%5B%5D=${options.level}`)
     }
 
-    console.log(reqStr)
-
-    return (await request(reqStr)).data
+    return (await request(reqUrl, reqArgs))
   }
 
   /**
@@ -158,7 +148,7 @@ export class Team {
    *
    */
   async matches(): Promise<JSON> {
-    return (await request(`teams/${this.id}/matches`)).data
+    return (await request(`teams/${this.id}/matches`))
   }
 
   /**
@@ -170,7 +160,7 @@ export class Team {
    *
    */
   async rankings(): Promise<JSON> {
-    return (await request(`teams/${this.id}/rankings`)).data
+    return (await request(`teams/${this.id}/rankings`))
   }
 
   /**
@@ -182,7 +172,7 @@ export class Team {
    *
    */
   async skills(): Promise<JSON> {
-    return (await request(`teams/${this.id}/skills`)).data
+    return (await request(`teams/${this.id}/skills`))
   }
 
   /**
@@ -194,6 +184,6 @@ export class Team {
    *
    */
   async awards(): Promise<JSON> {
-    return (await request(`teams/${this.id}/awards`)).data
+    return (await request(`teams/${this.id}/awards`))
   }
 }
