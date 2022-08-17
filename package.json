@@ -15,5 +15,6 @@
   },
   "dependencies": {
     "node-fetch": "^2.6.7"
-  }
+  },
+  "keywords": ["robotevents", "robotevents.com", "robotevents-api", "wrapper", "robotevents-wrapper", "vex", "vrc", "viqc", "vex robotics", "robotics"]
 }
