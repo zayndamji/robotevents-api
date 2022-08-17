@@ -42,6 +42,7 @@ export async function get(idNumber: any, program: string = ""): Promise<Team> {
     reqArgs.push(`number%5B%5D=${idNumber}`)
   }
   
+  program = program.toUpperCase()
   // @ts-ignore
   if (program in programs) reqArgs.push(`program%5B%5D=${programs[program]}`)
     

@@ -8,7 +8,7 @@ export const programs = {
   "TVRC": 46,
   "TIQC": 47,
   "VRAD": 51,
-  "BellAVR": 55,
+  "BELLAVR": 55,
   "FAC": 56,
   "VAIC": 57
 }
