@@ -148,8 +148,19 @@ export class Team {
    * const matches = await team.matches();
    *
    */
-  async matches(): Promise<JSON> {
-    return (await request(`teams/${this.id}/matches`))
+  async matches(options: {
+    eventId: number | null | undefined,
+    instance: number | null | undefined,
+    matchnum: number | null | undefined
+  } = { eventId: undefined, instance: undefined, matchnum: undefined }): Promise<JSON> {
+    let reqUrl: string = `teams/${this.id}/matches`
+    let reqArgs: string[] = []
+
+    if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`)
+    if (options.instance != undefined) reqArgs.push(`instance%5B%5D=${options.instance}`)
+    if (options.matchnum != undefined) reqArgs.push(`matchnum%5B%5D=${options.matchnum}`)
+  
+    return (await request(reqUrl, reqArgs))
   }
 
   /**
