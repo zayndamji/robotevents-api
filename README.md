@@ -2,7 +2,7 @@
 This is a wrapper for the RobotEvents API:  
 https://www.robotevents.com/api/v2
 
-Currently it's in the Alpha phase (v0.1.4) supporting only /teams URLs.  
+Currently it's in the Alpha phase (v0.1.5) supporting only /teams URLs.  
 
 This includes  
 \- /teams  
