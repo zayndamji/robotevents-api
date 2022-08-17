@@ -2,7 +2,7 @@ import nodeFetch from 'node-fetch'
 
 export default async function request(url: String, args: String[] = []): Promise<any> {
   let 
-    isNextPage: boolean = true, 
+    isNextPage: boolean | null = true, 
     currentIndex: number = 1, 
     data: Array<any> = [],
     argsStr: String = ``
@@ -19,13 +19,17 @@ export default async function request(url: String, args: String[] = []): Promise
       }
     })
 
-    // @ts-ignore
-    const json = await fetched.json() // @ts-ignore
-    if (json.data[0] != undefined) { // @ts-ignore
-      data = data.concat(data, json.data)
-    } // @ts-ignore
-    else if (json.data.length != 0) data.push(json) // @ts-ignore
-    isNextPage = json.meta['next_page_url'];
+    const json = await fetched.json()
+    if (json.data != undefined) {
+      if (json.data[0] != undefined) {
+        data = data.concat(data, json.data)
+      }
+      isNextPage = json.meta['next_page_url']
+    }
+    else {
+      data.push(json)
+      isNextPage = null
+    }
     currentIndex++
   }
 
