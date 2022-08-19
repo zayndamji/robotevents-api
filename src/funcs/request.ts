@@ -1,6 +1,6 @@
 import nodeFetch from 'node-fetch'
 
-export default async function request(url: String, args: String[] = []): Promise<any> {
+export async function request(url: String, args: String[] = []): Promise<any> {
   let 
     isNextPage: boolean | null = true, 
     currentIndex: number = 1, 

@@ -1,6 +1,5 @@
-import request from "../funcs/request"
-import capitalizeFirst from "../funcs/capitalizeFirst"
-import { programs, letters } from "../data/index"
+import { request, capitalizeFirst } from "../funcs"
+import { programs, letters } from "../data"
 
 /**
  * Fetches team by number and program.
