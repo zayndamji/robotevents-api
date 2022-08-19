@@ -19,7 +19,6 @@ This includes
 \- /teams/{id}/awards  
 
 ## Installation
-<hr>
 
 To start using this package, install it using ``npm`` and a ``terminal``. Enter this command into the terminal:
 ```
@@ -40,7 +39,6 @@ Example (this is not a real token):
 <img src="https://github.com/zaypers/robotevents-api/raw/main/assets/dotenv-token.png">  
 
 ## Usage
-<hr>
 
 In your ``app.js`` or ``index.js`` file, start by writing:  
 ```javascript
