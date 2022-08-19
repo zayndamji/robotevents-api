@@ -1,5 +1,6 @@
 # RobotEvents API Wrapper
-<a href="https://github.com/zaypers/robotevents-api/releases"><img src="https://img.shields.io/github/v/release/zaypers/robotevents-api?include_prereleases"></a>
+<a href="https://www.npmjs.com/package/robotevents-api"><img src="https://img.shields.io/npm/v/robotevents-api"></a>
+<a href="https://www.npmjs.com/package/robotevents-api"><img src="https://badgen.net/packagephobia/install/robotevents-api"></a>
 <a href="https://github.com/zaypers/robotevents-api/blob/main/LICENSE"><img src="https://img.shields.io/github/license/zaypers/robotevents-api"></a>
 <br>
 
