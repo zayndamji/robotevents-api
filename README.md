@@ -18,6 +18,9 @@ This includes
 \- /teams/{id}/skills  
 \- /teams/{id}/awards  
 
+## Installation
+<hr>
+
 To start using this package, install it using ``npm`` and a ``terminal``. Enter this command into the terminal:
 ```
 npm install robotevents-api
@@ -35,6 +38,9 @@ In a .env file in the directory with your app.js file, add your RobotEvents toke
 
 Example (this is not a real token):  
 <img src="https://github.com/zaypers/robotevents-api/raw/main/assets/dotenv-token.png">  
+
+## Usage
+<hr>
 
 In your ``app.js`` or ``index.js`` file, start by writing:  
 ```javascript
