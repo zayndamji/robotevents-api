@@ -1,4 +1,8 @@
 # RobotEvents API Wrapper
+<a href="https://github.com/zaypers/robotevents-api/releases"><img src="https://img.shields.io/github/v/release/zaypers/robotevents-api?include_prereleases"></a>
+<a href="https://github.com/zaypers/robotevents-api/blob/main/LICENSE"><img src="https://img.shields.io/github/license/zaypers/robotevents-api"></a>
+<br>
+
 This is a wrapper for the RobotEvents API:  
 https://www.robotevents.com/api/v2
 
