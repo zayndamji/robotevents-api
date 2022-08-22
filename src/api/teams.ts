@@ -143,9 +143,12 @@ export class Team {
    * Fetches matches of a team.
    * 
    * @example
-   * const team = await robotevents.teams.getByNumber('392X');
-   * const matches = await team.matches();
-   *
+   * const team = await robotevents.teams.get('23900B', 'VRC');
+   * const matches = await team.matches({
+   *   eventId: 45414,
+   *   instance: 1,
+   *   matchnum: 1
+   * });
    */
   async matches(options: {
     eventId: number | null | undefined,
@@ -166,8 +169,11 @@ export class Team {
    * Fetches rankings of a team.
    * 
    * @example
-   * const team = await robotevents.teams.getByNumber('392X');
-   * const rankings = await team.rankings();
+   * const team = await robotevents.teams.get('23900B', 'VRC');
+   * const rankings = await team.rankings({
+   *   eventId: 46025,
+   *   rank: 19
+   * });
    *
    */
   async rankings(options: {
@@ -187,8 +193,11 @@ export class Team {
    * Fetches skills of a team.
    * 
    * @example
-   * const team = await robotevents.teams.getByNumber('392X');
-   * const skills = await team.skills();
+   * const team = await robotevents.teams.get('23900B', 'VRC');
+   * const skills = await team.skills({
+   *   eventId: 47030,
+   *   type: 'driver'
+   * });
    *
    */
   async skills(options: {
