@@ -100,3 +100,14 @@ const rankings = await team.rankings({
   rank: 19
 });
 ```
+
+``Team.skills()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
+Arguments include ``eventId`` and ``type``.
+
+```javascript
+const team = await robotevents.teams.get('23900B', 'VRC');
+const skills = await team.skills({
+  eventId: 47030,
+  type: 'driver'
+});
+```
