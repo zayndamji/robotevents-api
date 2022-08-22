@@ -67,7 +67,7 @@ const skills = await team.skills();
 const awards = await team.awards();
 ```  
 
-``team.events()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
+``Team.events()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
 Arguments include ``sku`` and ``level``.
 
 ```javascript
@@ -78,7 +78,7 @@ const events = await team.events({
 });
 ```
 
-``team.matches()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
+``Team.matches()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
 Arguments include ``eventId``, ``instance``, and ``matchnum``.
 
 ```javascript
@@ -90,7 +90,7 @@ const matches = await team.matches({
 });
 ```
 
-``team.rankings()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
+``Team.rankings()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
 Arguments include ``eventId`` and ``rank``.
 
 ```javascript
