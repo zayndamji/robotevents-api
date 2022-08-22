@@ -191,8 +191,17 @@ export class Team {
    * const skills = await team.skills();
    *
    */
-  async skills(): Promise<JSON> {
-    return (await request(`teams/${this.id}/skills`))
+  async skills(options: {
+    eventId: number | null | undefined,
+    type: string | null | undefined
+  }): Promise<JSON> {
+    let reqUrl: string = `teams/${this.id}/skills`
+    let reqArgs: string[] = []
+
+    if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`)
+    if (options.type != undefined) reqArgs.push(`type%5B%5D=${options.type.toLowerCase()}`)
+
+    return (await request(reqUrl, reqArgs))
   }
 
   /**
