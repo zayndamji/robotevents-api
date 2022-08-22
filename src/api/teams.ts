@@ -217,8 +217,10 @@ export class Team {
    * Fetches awards of a team.
    * 
    * @example
-   * const team = await robotevents.teams.getByNumber('392X');
-   * const awards = await team.awards();
+   * const team = await robotevents.teams.get('315Y', 'VRC');
+   * const awards = await team.awards({
+   *   eventId: 47029
+   * });
    *
    */
   async awards(options: {

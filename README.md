@@ -111,3 +111,13 @@ const skills = await team.skills({
   type: 'driver'
 });
 ```
+
+``Team.awards()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
+Arguments include ``eventId``.
+
+```javascript
+const team = await robotevents.teams.get('315Y', 'VRC');
+const awards = await team.awards({
+  eventId: 47029
+});
+```
