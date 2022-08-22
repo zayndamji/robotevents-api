@@ -221,7 +221,14 @@ export class Team {
    * const awards = await team.awards();
    *
    */
-  async awards(): Promise<JSON> {
-    return (await request(`teams/${this.id}/awards`))
+  async awards(options: {
+    eventId: number | null | undefined
+  }): Promise<JSON> {
+    let reqUrl: string = `teams/${this.id}/awards`
+    let reqArgs: string[] = []
+
+    if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`)
+
+    return (await request(reqUrl, reqArgs))
   }
 }
