@@ -170,8 +170,17 @@ export class Team {
    * const rankings = await team.rankings();
    *
    */
-  async rankings(): Promise<JSON> {
-    return (await request(`teams/${this.id}/rankings`))
+  async rankings(options: {
+    eventId: number | null | undefined,
+    rank: number | null | undefined
+  } = { eventId: undefined, rank: undefined }): Promise<JSON> {
+    let reqUrl: string = `teams/${this.id}/rankings`
+    let reqArgs: string[] = []
+
+    if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`)
+    if (options.rank != undefined) reqArgs.push(`rank%5B%5D=${options.rank}`)
+
+    return (await request(reqUrl, reqArgs))
   }
 
   /**
