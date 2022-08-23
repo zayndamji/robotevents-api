@@ -123,9 +123,9 @@ export class Team {
    *
    */
   async events(options: {
-    sku: String | null | undefined,
-    level: String | null | undefined
-  } = { sku: undefined, level: undefined }): Promise<JSON> {
+    sku: string | null,
+    level: string | null
+  }): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/events`
     let reqArgs: string[] = []
 
@@ -151,10 +151,10 @@ export class Team {
    * });
    */
   async matches(options: {
-    eventId: number | null | undefined,
-    instance: number | null | undefined,
-    matchnum: number | null | undefined
-  } = { eventId: undefined, instance: undefined, matchnum: undefined }): Promise<JSON> {
+    eventId: number | null,
+    instance: number | null,
+    matchnum: number | null
+  }): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/matches`
     let reqArgs: string[] = []
 
@@ -177,9 +177,9 @@ export class Team {
    *
    */
   async rankings(options: {
-    eventId: number | null | undefined,
-    rank: number | null | undefined
-  } = { eventId: undefined, rank: undefined }): Promise<JSON> {
+    eventId: number | null,
+    rank: number | null
+  }): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/rankings`
     let reqArgs: string[] = []
 
@@ -201,8 +201,8 @@ export class Team {
    *
    */
   async skills(options: {
-    eventId: number | null | undefined,
-    type: string | null | undefined
+    eventId: number | null,
+    type: string | null
   }): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/skills`
     let reqArgs: string[] = []
@@ -224,7 +224,7 @@ export class Team {
    *
    */
   async awards(options: {
-    eventId: number | null | undefined
+    eventId: number | null
   }): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/awards`
     let reqArgs: string[] = []
