@@ -1,5 +1,5 @@
 import { request, capitalizeFirst } from "../funcs"
-import { programs, letters } from "../data"
+import { programs, letters, seasons } from "../data"
 
 /**
  * Fetches team by number and program.
@@ -124,12 +124,19 @@ export class Team {
    */
   async events(options: {
     sku: string | undefined,
+    season: string | undefined,
     level: string | undefined
-  } = { sku: undefined, level: undefined }): Promise<JSON> {
+  } = { sku: undefined, season: undefined, level: undefined }): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/events`
     let reqArgs: string[] = []
 
     if (options.sku != undefined) reqArgs.push(`sku%5B%5D=${options.sku}`)
+
+    if (options.season != undefined) { // @ts-ignore
+      if (seasons[this.program.code].hasOwnProperty(options.season)) { // @ts-ignore
+        reqArgs.push(`season%5B%5D=${seasons[this.program.code][options.season]}`)
+      }
+    }
 
     if (options.level != undefined) {
       options.level = capitalizeFirst(options.level)
