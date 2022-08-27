@@ -68,12 +68,13 @@ const awards = await team.awards();
 ```  
 
 ``Team.events()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
-Arguments include ``sku`` and ``level``.
+Arguments include ``sku``, ``season``, and ``level``.
 
 ```javascript
 const team = await robotevents.teams.get('23900B', 'VRC');
 const events = await team.events({
   sku: 'RE-VRC-21-5434',
+  season: '2021-2022',
   level: 'World'
 });
 ```
