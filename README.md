@@ -80,12 +80,13 @@ const events = await team.events({
 ```
 
 ``Team.matches()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
-Arguments include ``eventId``, ``instance``, and ``matchnum``.
+Arguments include ``eventId``, ``season``, ``instance``, and ``matchnum``.
 
 ```javascript
 const team = await robotevents.teams.get('23900B', 'VRC');
 const matches = await team.matches({
   eventId: 45414,
+  season: '2021-2022',
   instance: 1,
   matchnum: 1
 });
