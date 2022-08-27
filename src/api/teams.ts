@@ -1,5 +1,5 @@
-import { request, capitalizeFirst } from "../funcs"
-import { programs, letters, seasons } from "../data"
+import { request, capitalizeFirst, getSeasonCode } from "../funcs"
+import { programs, letters } from "../data"
 
 /**
  * Fetches team by number and program.
@@ -133,11 +133,7 @@ export class Team {
 
     if (options.sku != undefined) reqArgs.push(`sku%5B%5D=${options.sku}`)
 
-    if (options.season != undefined) { // @ts-ignore
-      if (seasons[this.program.code].hasOwnProperty(options.season)) { // @ts-ignore
-        reqArgs.push(`season%5B%5D=${seasons[this.program.code][options.season]}`)
-      }
-    }
+    if (options.season != undefined) reqArgs.push(`season%5B%5D=${getSeasonCode(this.program.code, options.season)}`)
 
     if (options.level != undefined) {
       options.level = capitalizeFirst(options.level)
