@@ -150,6 +150,8 @@ export class Team {
   /**
    * Fetches matches of a team.
    * 
+   * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/matches
+   * 
    * @example
    * const team = await robotevents.teams.get('23900B', 'VRC');
    * const matches = await team.matches({
@@ -176,6 +178,8 @@ export class Team {
   /**
    * Fetches rankings of a team.
    * 
+   * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/rankings
+   * 
    * @example
    * const team = await robotevents.teams.get('23900B', 'VRC');
    * const rankings = await team.rankings({
@@ -200,6 +204,8 @@ export class Team {
   /**
    * Fetches skills of a team.
    * 
+   * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/skills
+   * 
    * @example
    * const team = await robotevents.teams.get('23900B', 'VRC');
    * const skills = await team.skills({
@@ -223,6 +229,8 @@ export class Team {
 
   /**
    * Fetches awards of a team.
+   * 
+   * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/awards
    * 
    * @example
    * const team = await robotevents.teams.get('315Y', 'VRC');
