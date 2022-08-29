@@ -183,7 +183,8 @@ export class Team {
    * const team = await robotevents.teams.get('23900B', 'VRC');
    * const rankings = await team.rankings({
    *   eventId: 46025,
-   *   rank: 19
+   *   rank: 19,
+   *   season: "2021-2022"
    * });
    *
    */
