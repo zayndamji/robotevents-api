@@ -87,6 +87,7 @@ const team = await robotevents.teams.get('23900B', 'VRC');
 const matches = await team.matches({
   eventId: 45414,
   season: '2021-2022',
+  round: 'round-of-16',
   instance: 1,
   matchnum: 1
 });
