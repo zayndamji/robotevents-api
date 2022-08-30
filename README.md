@@ -111,7 +111,8 @@ Arguments include ``eventId`` and ``type``.
 const team = await robotevents.teams.get('23900B', 'VRC');
 const skills = await team.skills({
   eventId: 47030,
-  type: 'driver'
+  type: 'driver',
+  season: '2021-2022'
 });
 ```
 
