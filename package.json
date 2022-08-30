@@ -20,6 +20,6 @@
     "type": "git",
     "url": "https://github.com/zaypers/robotevents-api.git"
   },
-  "homepage": "https://github.com/zaypers/robotevents-api#readme",
+  "homepage": "https://zaypers.github.io/robotevents-api/",
   "keywords": ["robotevents", "robotevents.com", "robotevents-api", "wrapper", "robotevents-wrapper", "vex", "vrc", "viqc", "vex robotics", "robotics"]
 }
