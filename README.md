@@ -80,7 +80,7 @@ const events = await team.events({
 ```
 
 ``Team.matches()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
-Arguments include ``eventId``, ``season``, ``instance``, and ``matchnum``.
+Arguments include ``eventId``, ``season``, ``round``, ``instance``, and ``matchnum``.
 
 ```javascript
 const team = await robotevents.teams.get('23900B', 'VRC');
@@ -106,7 +106,7 @@ const rankings = await team.rankings({
 ```
 
 ``Team.skills()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
-Arguments include ``eventId`` and ``type``.
+Arguments include ``eventId``, ``type``, and ``season``.
 
 ```javascript
 const team = await robotevents.teams.get('23900B', 'VRC');
@@ -118,7 +118,7 @@ const skills = await team.skills({
 ```
 
 ``Team.awards()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
-Arguments include ``eventId``.
+Arguments include ``eventId`` and ``season``.
 
 ```javascript
 const team = await robotevents.teams.get('315B', 'VRC');
