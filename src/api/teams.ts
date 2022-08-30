@@ -160,14 +160,21 @@ export class Team {
   async matches(options: {
     eventId: number | undefined,
     season: string | undefined,
+    round: string | undefined,
     instance: number | undefined,
     matchnum: number | undefined
-  } = { eventId: undefined, season: undefined, instance: undefined, matchnum: undefined }): Promise<JSON> {
+  } = { eventId: undefined, season: undefined, round: undefined, instance: undefined, matchnum: undefined }): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/matches`
     let reqArgs: string[] = []
 
     if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`)
     if (options.season != undefined) reqArgs.push(`season%5B%5D=${getSeasonCode(this.program.code, options.season)}`)
+    if (options.round != undefined) {
+      options.round == options.round.toLowerCase()
+      if (options.round.substring(0, 4) in rounds) { // @ts-ignore
+        reqArgs.push(`round%5B%5D=${rounds[options.round.substring(0, 4)]}`)
+      }
+    }
     if (options.instance != undefined) reqArgs.push(`instance%5B%5D=${options.instance}`)
     if (options.matchnum != undefined) reqArgs.push(`matchnum%5B%5D=${options.matchnum}`)
   
