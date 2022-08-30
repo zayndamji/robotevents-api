@@ -218,13 +218,15 @@ export class Team {
    */
   async skills(options: {
     eventId: number | undefined,
-    type: string | undefined
-  } = { eventId: undefined, type: undefined }): Promise<JSON> {
+    type: string | undefined,
+    season: string | undefined
+  } = { eventId: undefined, type: undefined, season: undefined }): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/skills`
     let reqArgs: string[] = []
 
     if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`)
     if (options.type != undefined) reqArgs.push(`type%5B%5D=${options.type.toLowerCase()}`)
+    if (options.season != undefined) reqArgs.push(`season%5B%5D=${getSeasonCode(this.program.code, options.season)}`)
 
     return (await request(reqUrl, reqArgs))
   }
