@@ -238,9 +238,10 @@ export class Team {
    * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/awards
    * 
    * @example
-   * const team = await robotevents.teams.get('315Y', 'VRC');
+   * const team = await robotevents.teams.get('315B', 'VRC');
    * const awards = await team.awards({
-   *   eventId: 47029
+   *   eventId: 47030,
+   *   season: '2020-2021'
    * });
    *
    */

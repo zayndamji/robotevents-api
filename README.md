@@ -120,8 +120,9 @@ const skills = await team.skills({
 Arguments include ``eventId``.
 
 ```javascript
-const team = await robotevents.teams.get('315Y', 'VRC');
+const team = await robotevents.teams.get('315B', 'VRC');
 const awards = await team.awards({
-  eventId: 47029
+  eventId: 47029,
+  season: '2020-2021'
 });
 ```
