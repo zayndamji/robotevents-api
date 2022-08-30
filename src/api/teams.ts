@@ -1,5 +1,5 @@
 import { request, capitalizeFirst, getSeasonCode } from "../funcs"
-import { programs, letters } from "../data"
+import { programs, letters, rounds } from "../data"
 
 /**
  * Fetches team by number and program.
