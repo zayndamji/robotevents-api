@@ -245,12 +245,14 @@ export class Team {
    *
    */
   async awards(options: {
-    eventId: number | undefined
-  } = { eventId: undefined }): Promise<JSON> {
+    eventId: number | undefined,
+    season: string | undefined
+  } = { eventId: undefined, season: undefined }): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/awards`
     let reqArgs: string[] = []
 
     if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`)
+    if (options.season != undefined) reqArgs.push(`season%5B%5D=${getSeasonCode(this.program.code, options.season)}`)
 
     return (await request(reqUrl, reqArgs))
   }
