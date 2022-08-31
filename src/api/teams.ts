@@ -119,6 +119,8 @@ export class Team {
    * const events = await team.events({
    *  sku: 'RE-VRC-21-5434',
    *  season: '2021-2022',
+   *  start: '2022-05-02T00:00:00Z',
+   *  end: '2022-05-06T00:00:00Z',
    *  level: 'World'
    * });
    *
