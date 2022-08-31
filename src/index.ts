@@ -1,4 +1,4 @@
 export * as teams from './api/teams'
 export * as data from './data'
 export * as funcs from './funcs'
-export const version: string = '0.1.27'
+export const version: string = '0.1.28'
