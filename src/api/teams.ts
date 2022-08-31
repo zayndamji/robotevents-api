@@ -126,14 +126,19 @@ export class Team {
   async events(options: {
     sku: string | undefined,
     season: string | undefined,
+    start: string | undefined,
+    end: string | undefined,
     level: string | undefined
-  } = { sku: undefined, season: undefined, level: undefined }): Promise<JSON> {
+  } = { sku: undefined, season: undefined, start: undefined, end: undefined, level: undefined }): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/events`
     let reqArgs: string[] = []
 
     if (options.sku != undefined) reqArgs.push(`sku%5B%5D=${options.sku}`)
 
     if (options.season != undefined) reqArgs.push(`season%5B%5D=${getSeasonCode(this.program.code, options.season)}`)
+    
+    if (options.start != undefined) reqArgs.push(`start=${options.start}`)
+    if (options.end != undefined) reqArgs.push(`end=${options.end}`)
 
     if (options.level != undefined) {
       options.level = capitalizeFirst(options.level)
