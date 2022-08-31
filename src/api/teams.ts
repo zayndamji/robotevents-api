@@ -7,8 +7,8 @@ import { programs, letters, rounds } from "../data"
  * @param program Program
  *
  * @example
- * const team = await robotevents.teams.getByNumber('392X');
- * const team = await robotevents.teams.getByNumber('392X', 'VRC');
+ * const team = await robotevents.teams.get('392X');
+ * const team = await robotevents.teams.get('392X', 'VRC');
  *
  */
 export async function get(number: string, program: string): Promise<Team>
@@ -18,7 +18,7 @@ export async function get(number: string, program: string): Promise<Team>
  * @param id RobotEvents ID
  *
  * @example
- * const team = await robotevents.teams.getByNumber(136072);
+ * const team = await robotevents.teams.get(136072);
  *
  */
 export async function get(id: number): Promise<Team>
