@@ -1,4 +1,4 @@
-import { request, capitalizeFirst, getSeasonCode } from "../funcs"
+import { request, capitalize, getSeasonCode } from "../funcs"
 import { programs, letters, rounds } from "../data"
 
 /**
@@ -143,7 +143,7 @@ export class Team {
     if (options.end != undefined) reqArgs.push(`end=${options.end}`)
 
     if (options.level != undefined) {
-      options.level = capitalizeFirst(options.level)
+      options.level = capitalize(options.level)
       reqArgs.push(`level%5B%5D=${options.level}`)
     }
 

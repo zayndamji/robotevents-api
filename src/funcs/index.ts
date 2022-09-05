@@ -1,3 +1,3 @@
 export { request } from "./request"
-export { capitalizeFirst } from "./capitalizeFirst"
+export { capitalize } from "./capitalize"
 export { getSeasonCode } from "./getSeasonCode"
