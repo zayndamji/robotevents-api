@@ -135,3 +135,12 @@ const awards = await event.teams({
   number: '392X'
 });
 ```
+
+``Event.skills()`` - Fetches all skills runs of an event.
+
+```javascript
+const event = await robotevents.events.get(47030);
+const skills = await event.skills({
+  teamId: 136072
+});
+```

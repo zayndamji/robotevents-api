@@ -176,7 +176,7 @@ export class Event {
    * const event = await robotevents.events.get(47030);
    * const skills = await event.skills({
    *   teamId: 136072
-   * })
+   * });
    *
    */
    async skills(options: {
