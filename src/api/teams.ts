@@ -116,7 +116,7 @@ export class Team {
    * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/events
    * 
    * @example
-   * const team = await robotevents.teams.getByNumber('23900B', 'VRC');
+   * const team = await robotevents.teams.get('23900B', 'VRC');
    * const events = await team.events({
    *  sku: 'RE-VRC-21-5434',
    *  season: '2021-2022',
