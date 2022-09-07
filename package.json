@@ -11,7 +11,8 @@
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "typedoc": "^0.23.14"
   },
   "dependencies": {
     "node-fetch": "^2.6.7"
@@ -21,5 +22,17 @@
     "url": "https://github.com/zaypers/robotevents-api.git"
   },
   "homepage": "https://zaypers.github.io/robotevents-api/",
-  "keywords": ["robotevents", "robotevents.com", "robotevents-api", "wrapper", "robotevents-wrapper", "vex", "vrc", "viqc", "vexu", "vex robotics", "robotics"]
+  "keywords": [
+    "robotevents",
+    "robotevents.com",
+    "robotevents-api",
+    "wrapper",
+    "robotevents-wrapper",
+    "vex",
+    "vrc",
+    "viqc",
+    "vexu",
+    "vex robotics",
+    "robotics"
+  ]
 }
