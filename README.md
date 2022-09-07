@@ -11,8 +11,9 @@ Extended documentation is located at:
 https://zaypers.github.io/robotevents-api/  
 
 Currently it's in the Alpha phase supporting  
-\- getting Team(s) and their events, matches, rankings, skills, awards.  
-\- getting Event(s)  
+\- getting Team(s) - events, matches, rankings, skills, and awards.   
+\- getting Event(s) - teams and skills.  
+There are still limited parameters compared to the actual RobotEvents API.
 
 ## Installation
 
