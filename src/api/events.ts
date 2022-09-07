@@ -166,4 +166,27 @@ export class Event {
 
     return teams
   }
+
+  /**
+   * Fetches skills of an event.
+   * 
+   * @param options Object of perameters, mirrored from RobotEvents API - /events/{id}/skills
+   * 
+   * @example
+   * const event = await robotevents.events.get(47030);
+   * const skills = await event.skills({
+   *   teamId: 136072
+   * })
+   *
+   */
+   async skills(options: {
+    teamId: number | undefined
+  } = { teamId: undefined }): Promise<Team[]> {
+    let reqUrl: string = `events/${this.id}/skills`
+    let reqArgs: string[] = []
+
+    if (options.teamId != undefined) reqArgs.push(`team%5B%5D=${options.teamId}`)
+
+    return (await request(reqUrl, reqArgs))
+  }
 }
