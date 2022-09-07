@@ -7,16 +7,9 @@
 This is a wrapper for the RobotEvents API:  
 https://www.robotevents.com/api/v2
 
-Currently it's in the Alpha phase supporting only /teams URLs.  
-
-This includes  
-\- /teams  
-\- /teams/{id}  
-\- /teams/{id}/events  
-\- /teams/{id}/matches  
-\- /teams/{id}/rankings  
-\- /teams/{id}/skills  
-\- /teams/{id}/awards  
+Currently it's in the Alpha phase supporting  
+\- getting Team(s) and their events, matches, rankings, skills, awards.  
+\- getting Event(s)  
 
 ## Installation
 
