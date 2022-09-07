@@ -1,5 +1,6 @@
 import { request, capitalize, getSeasonCode } from "../funcs"
 import { programs, letters, rounds } from "../data"
+import { Event } from "./events"
 
 /**
  * Fetches team by number and program.
@@ -131,7 +132,7 @@ export class Team {
     start: string | undefined,
     end: string | undefined,
     level: string | undefined
-  } = { sku: undefined, season: undefined, start: undefined, end: undefined, level: undefined }): Promise<JSON> {
+  } = { sku: undefined, season: undefined, start: undefined, end: undefined, level: undefined }): Promise<Event[]> {
     let reqUrl: string = `teams/${this.id}/events`
     let reqArgs: string[] = []
 
@@ -147,7 +148,13 @@ export class Team {
       reqArgs.push(`level%5B%5D=${options.level}`)
     }
 
-    return (await request(reqUrl, reqArgs))
+    const unparsedEvents = await request(reqUrl, reqArgs)
+    const events = []
+    for (const event of unparsedEvents) {
+      events.push(new Event(event))
+    }
+
+    return events
   }
 
   /**
