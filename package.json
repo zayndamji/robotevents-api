@@ -7,7 +7,7 @@
   "author": "Zaypers",
   "license": "ISC",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npx typedoc src/index.ts",
     "prepare": "npm run build"
   },
   "devDependencies": {
