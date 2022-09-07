@@ -126,3 +126,12 @@ To fetch an ``Event``, use the method ``robotevents.events.get(sku)``. Replace `
 const team = await robotevents.events.get('RE-VRC-22-7950');
 ```  
 This will return a ``Event`` object. For more details on the data that a ``Event`` object contains, go to the file ``/src/api/events.ts``.  
+
+``Event.teams()`` - Fetches all teams of an event.
+
+```javascript
+const event = await robotevents.events.get('RE-VRC-22-7950');
+const awards = await event.teams({
+  number: '392X'
+});
+```
