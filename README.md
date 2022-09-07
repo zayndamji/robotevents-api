@@ -60,8 +60,7 @@ const skills = await team.skills();
 const awards = await team.awards();
 ```  
 
-``Team.events()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
-Arguments include ``sku``, ``season``, and ``level``.
+``Team.events()`` - Fetches all events of a team.
 
 ```javascript
 const team = await robotevents.teams.get('23900B', 'VRC');
@@ -74,8 +73,7 @@ const events = await team.events({
 });
 ```
 
-``Team.matches()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
-Arguments include ``eventId``, ``season``, ``round``, ``instance``, and ``matchnum``.
+``Team.matches()`` - Fetches all matches of a team. <i>Warning: this function takes a lot of time. To reduce the amount of time, specify an event's RobotEvents ID.</i>
 
 ```javascript
 const team = await robotevents.teams.get('23900B', 'VRC');
@@ -88,8 +86,7 @@ const matches = await team.matches({
 });
 ```
 
-``Team.rankings()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
-Arguments include ``eventId``, ``rank``, and ``season``.
+``Team.rankings()`` - Fetches all rankings of a team.
 
 ```javascript
 const team = await robotevents.teams.get('23900B', 'VRC');
@@ -100,8 +97,7 @@ const rankings = await team.rankings({
 });
 ```
 
-``Team.skills()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
-Arguments include ``eventId``, ``type``, and ``season``.
+``Team.rankings()`` - Fetches all skills runs of a team. <i>Note: driver and programming skills runs are seperate.</i>
 
 ```javascript
 const team = await robotevents.teams.get('23900B', 'VRC');
@@ -112,8 +108,7 @@ const skills = await team.skills({
 });
 ```
 
-``Team.awards()`` has a few optional perameters, which you keep inside of an object and pass in as the first argument.  
-Arguments include ``eventId`` and ``season``.
+``Team.awards()`` - Fetches all awards of a team.
 
 ```javascript
 const team = await robotevents.teams.get('315B', 'VRC');
