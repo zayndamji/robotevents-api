@@ -144,19 +144,22 @@ export class Event {
    * @param options Object of perameters, mirrored from RobotEvents API - /events/{id}/teams
    * 
    * @example
-   * const event = await robotevents.events.get('RE-VRC-22-7950');
+   * const event = await robotevents.events.get('RE-VRC-21-7030');
    * const teams = await event.teams({
-   *  number: '392X'
+   *  registered: false,
+   *  number: '23900B'
    * });
    *
    */
   async teams(options: {
-    number: string | undefined
-  } = { number: undefined }): Promise<Team[]> {
+    number: string | undefined,
+    registered: boolean | undefined
+  } = { number: undefined, registered: undefined }): Promise<Team[]> {
     let reqUrl: string = `events/${this.id}/teams`
     let reqArgs: string[] = []
 
     if (options.number != undefined) reqArgs.push(`number%5B%5D=${options.number.toUpperCase()}`)
+    if (options.registered != undefined) reqArgs.push(`registered=${options.registered}`)
 
     const unparsedTeams = await request(reqUrl, reqArgs)
     const teams = []

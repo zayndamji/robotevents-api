@@ -133,9 +133,10 @@ This will return a ``Event`` object. For more details on the data that a ``Event
 ``Event.teams()`` - Fetches all teams of an event.
 
 ```javascript
-const event = await robotevents.events.get('RE-VRC-22-7950');
+const event = await robotevents.events.get('RE-VRC-21-7030');
 const teams = await event.teams({
-  number: '392X'
+  registered: false,
+  number: '23900B'
 });
 ```
 
