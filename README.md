@@ -5,7 +5,10 @@
 <br>
 
 This is a wrapper for the RobotEvents API:  
-https://www.robotevents.com/api/v2
+https://www.robotevents.com/api/v2  
+
+Extended documentation is located at:  
+https://zaypers.github.io/robotevents-api/  
 
 Currently it's in the Alpha phase supporting  
 \- getting Team(s) and their events, matches, rankings, skills, awards.  
