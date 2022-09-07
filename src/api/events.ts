@@ -9,7 +9,7 @@ import { letters } from "../data"
  * const event = await robotevents.events.get('RE-VRC-22-7950');
  *
  */
-export async function get(sku: string): Promise<undefined>
+export async function get(sku: string): Promise<Event>
 
 /**
  * Fetches event by RobotEvents id.
@@ -19,9 +19,9 @@ export async function get(sku: string): Promise<undefined>
  * const event = await robotevents.events.get(47950);
  *
  */
-export async function get(id: number): Promise<undefined>
+export async function get(id: number): Promise<Event>
  
-export async function get(idSku: any): Promise<undefined> {
+export async function get(idSku: any): Promise<Event> {
   let
     reqUrl: String = '',
     reqArgs: String[] = [],
