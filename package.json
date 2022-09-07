@@ -7,12 +7,11 @@
   "author": "Zaypers",
   "license": "ISC",
   "scripts": {
-    "build": "tsc && npx typedoc src/index.ts",
+    "build": "tsc",
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "typescript": "^4.7.4",
-    "typedoc": "^0.23.14"
+    "typescript": "^4.7.4"
   },
   "dependencies": {
     "node-fetch": "^2.6.7"
