@@ -122,3 +122,9 @@ const awards = await team.awards({
   season: '2020-2021'
 });
 ```
+
+To fetch an ``Event``, use the method ``robotevents.events.get(sku)``. Replace ``sku`` with the event sku (ex. RE-VRC-22-7950).
+```javascript
+const team = await robotevents.events.get('RE-VRC-22-7950');
+```  
+This will return a ``Event`` object. For more details on the data that a ``Event`` object contains, go to the file ``/src/api/events.ts``.  
