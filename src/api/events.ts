@@ -150,7 +150,7 @@ export class Event {
    * });
    *
    */
-   async teams(options: {
+  async teams(options: {
     number: string | undefined
   } = { number: undefined }): Promise<Team[]> {
     let reqUrl: string = `events/${this.id}/teams`
