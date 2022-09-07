@@ -1,5 +1,6 @@
 import { request } from "../funcs"
 import { letters } from "../data"
+import { Team } from "./teams"
 
 /**
  * Fetches event by SKU.
@@ -135,5 +136,34 @@ export class Event {
       // @ts-ignore
       this[entries[i][0]] = entries[i][1]
     }
+  }
+
+  /**
+   * Fetches teams of an event.
+   * 
+   * @param options Object of perameters, mirrored from RobotEvents API - /events/{id}/teams
+   * 
+   * @example
+   * const event = await robotevents.events.get('RE-VRC-22-7950');
+   * const teams = await event.teams({
+   *  number: '392X'
+   * });
+   *
+   */
+   async teams(options: {
+    number: string | undefined
+  } = { number: undefined }): Promise<Team[]> {
+    let reqUrl: string = `events/${this.id}/teams`
+    let reqArgs: string[] = []
+
+    if (options.number != undefined) reqArgs.push(`number%5B%5D=${options.number.toUpperCase()}`)
+
+    const unparsedTeams = await request(reqUrl, reqArgs)
+    const teams = []
+    for (const event of unparsedTeams) {
+      teams.push(new Team(event))
+    }
+
+    return teams
   }
 }
