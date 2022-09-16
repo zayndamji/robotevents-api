@@ -127,12 +127,12 @@ export class Team {
    *
    */
   async events(options: {
-    sku: string | undefined,
-    season: string | undefined,
-    start: string | undefined,
-    end: string | undefined,
-    level: string | undefined
-  } = { sku: undefined, season: undefined, start: undefined, end: undefined, level: undefined }): Promise<Event[]> {
+    sku?: string,
+    season?: string,
+    start?: string,
+    end?: string,
+    level?: string
+  } = {}): Promise<Event[]> {
     let reqUrl: string = `teams/${this.id}/events`
     let reqArgs: string[] = []
 
@@ -173,12 +173,12 @@ export class Team {
    * });
    */
   async matches(options: {
-    eventId: number | undefined,
-    season: string | undefined,
-    round: string | undefined,
-    instance: number | undefined,
-    matchnum: number | undefined
-  } = { eventId: undefined, season: undefined, round: undefined, instance: undefined, matchnum: undefined }): Promise<JSON> {
+    eventId?: number,
+    season?: string,
+    round?: string,
+    instance?: number,
+    matchnum?: number
+  } = {}): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/matches`
     let reqArgs: string[] = []
 
@@ -211,10 +211,10 @@ export class Team {
    *
    */
   async rankings(options: {
-    eventId: number | undefined,
-    rank: number | undefined,
-    season: string | undefined
-  } = { eventId: undefined, rank: undefined, season: undefined }): Promise<JSON> {
+    eventId?: number,
+    rank?: number,
+    season?: string
+  } = {}): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/rankings`
     let reqArgs: string[] = []
 
@@ -240,10 +240,10 @@ export class Team {
    *
    */
   async skills(options: {
-    eventId: number | undefined,
-    type: string | undefined,
-    season: string | undefined
-  } = { eventId: undefined, type: undefined, season: undefined }): Promise<JSON> {
+    eventId?: number,
+    type?: string,
+    season?: string
+  } = {}): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/skills`
     let reqArgs: string[] = []
 
@@ -268,9 +268,9 @@ export class Team {
    *
    */
   async awards(options: {
-    eventId: number | undefined,
-    season: string | undefined
-  } = { eventId: undefined, season: undefined }): Promise<JSON> {
+    eventId?: number,
+    season?: string
+  } = {}): Promise<JSON> {
     let reqUrl: string = `teams/${this.id}/awards`
     let reqArgs: string[] = []
 

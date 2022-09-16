@@ -152,9 +152,9 @@ export class Event {
    *
    */
   async teams(options: {
-    number: string | undefined,
-    registered: boolean | undefined
-  } = { number: undefined, registered: undefined }): Promise<Team[]> {
+    number?: string,
+    registered?: boolean
+  } = {}): Promise<Team[]> {
     let reqUrl: string = `events/${this.id}/teams`
     let reqArgs: string[] = []
 
@@ -183,8 +183,8 @@ export class Event {
    *
    */
    async skills(options: {
-    teamId: number | undefined
-  } = { teamId: undefined }): Promise<Team[]> {
+    teamId?: number
+  } = {}): Promise<Team[]> {
     let reqUrl: string = `events/${this.id}/skills`
     let reqArgs: string[] = []
 
