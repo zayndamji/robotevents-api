@@ -1,5 +1,7 @@
 import nodeFetch from 'node-fetch'
 
+const token = process.env.TOKEN || process.env.REACT_APP_TOKEN || ''
+
 export async function request(url: String, args: String[] = []): Promise<any> {
   let 
     isNextPage: boolean | null = true, 
@@ -15,7 +17,7 @@ export async function request(url: String, args: String[] = []): Promise<any> {
     const fetched = await nodeFetch(`https://www.robotevents.com/api/v2/${url}?per_page=100&page=${currentIndex}${argsStr}`, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.TOKEN}`
+        'Authorization': `Bearer ${token}`
       }
     })
 
