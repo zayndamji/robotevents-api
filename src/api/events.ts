@@ -192,7 +192,7 @@ export class Event {
   async skills(options: {
     teamId?: number,
     type?: string
-  } = {}): Promise<Team[]> {
+  } = {}): Promise<JSON> {
     let reqUrl: string = `events/${this.id}/skills`
     let reqArgs: string[] = []
 
@@ -218,7 +218,7 @@ export class Event {
   async awards(options: {
     teamId?: number,
     winner?: string
-  } = {}): Promise<Team[]> {
+  } = {}): Promise<JSON> {
     let reqUrl: string = `events/${this.id}/awards`
     let reqArgs: string[] = []
 
@@ -250,7 +250,7 @@ export class Event {
     round?: string,
     instance?: number,
     matchnum?: number
-  } = {}): Promise<Team[]> {
+  } = {}): Promise<JSON> {
     options.divId = options.divId ?? 1
     let reqUrl: string = `events/${this.id}/divisions/${options.divId}/matches`
     let reqArgs: string[] = []
@@ -264,6 +264,35 @@ export class Event {
     }
     if (options.instance != undefined) reqArgs.push(`instance%5B%5D=${options.instance}`)
     if (options.matchnum != undefined) reqArgs.push(`matchnum%5B%5D=${options.matchnum}`)
+
+    return (await request(reqUrl, reqArgs))
+  }
+
+  /**
+   * Fetches rankings of an event (by division).
+   * 
+   * @param options Object of perameters, mirrored from RobotEvents API - /events/{id}/divisions/{div}/rankings
+   * 
+   * @example
+   * const event = await robotevents.events.get('RE-VRC-22-0008');
+   * const rankings = await event.rankings({
+   *   divId: 1,
+   *   teamId: 139290,
+   *   rank: 2
+   * });
+   *
+   */
+  async rankings(options: {
+    divId?: number,
+    teamId?: number,
+    rank?: number
+  } = {}): Promise<JSON> {
+    options.divId = options.divId ?? 1
+    let reqUrl: string = `events/${this.id}/divisions/${options.divId}/rankings`
+    let reqArgs: string[] = []
+
+    if (options.teamId != undefined) reqArgs.push(`team%5B%5D=${options.teamId}`)
+    if (options.rank != undefined) reqArgs.push(`rank%5B%5D=${options.rank}`)
 
     return (await request(reqUrl, reqArgs))
   }
