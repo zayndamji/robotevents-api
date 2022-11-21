@@ -135,8 +135,9 @@ This will return a ``Event`` object. For more details on the data that a ``Event
 ```javascript
 const event = await robotevents.events.get('RE-VRC-21-7030');
 const teams = await event.teams({
+  number: '23900B',
   registered: false,
-  number: '23900B'
+  country: 'US'
 });
 ```
 

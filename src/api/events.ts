@@ -146,20 +146,23 @@ export class Event {
    * @example
    * const event = await robotevents.events.get('RE-VRC-21-7030');
    * const teams = await event.teams({
+   *  number: '23900B',
    *  registered: false,
-   *  number: '23900B'
+   *  country: 'US'
    * });
    *
    */
   async teams(options: {
     number?: string,
-    registered?: boolean
+    registered?: boolean,
+    country?: string
   } = {}): Promise<Team[]> {
     let reqUrl: string = `events/${this.id}/teams`
     let reqArgs: string[] = []
 
     if (options.number != undefined) reqArgs.push(`number%5B%5D=${options.number.toUpperCase()}`)
     if (options.registered != undefined) reqArgs.push(`registered=${options.registered}`)
+    if (options.country != undefined) reqArgs.push(`country%5B%5D=${options.country}`)
 
     const unparsedTeams = await request(reqUrl, reqArgs)
     const teams = []
