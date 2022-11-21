@@ -54,30 +54,6 @@ export async function get(idNumber: any, program: string = ""): Promise<Team> {
   return new Team(data[0])
 }
 
-export type TeamData = {
-  id: number,
-
-  number: string
-  team_name: string
-  robot_name: string | null
-  organization: string
-  registered: boolean
-
-  program: { id: number, name: string, code: string }
-  grade: string
-
-  location: {
-    venue: string | null,
-    address_1: string | null,
-    address_2: string | null,
-    city: string | null,
-    region: string | null,
-    postcode: string | null,
-    country: string | null,
-    coordinates: { lat: number, lon: number }
-  }
-}
-
 /**
  * Contains methods mirrored from RobotEvents API for /teams.
  */
@@ -104,7 +80,7 @@ export class Team {
     coordinates: { lat: 0, lon: 0 }
   }
 
-  constructor(teamData: TeamData | Object = {}) {
+  constructor(teamData: Object = {}) {
     const entries: any = Object.entries(teamData)
     for (let i = 0; i < entries.length; i++) {
       // @ts-ignore

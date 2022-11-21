@@ -48,47 +48,6 @@ export async function get(idSku: any): Promise<Event> {
   return new Event(data[0])
 }
 
-export type EventData = {
-  id: number,
-  sku: string,
-
-  name: string,
-  start: string,
-  end: string,
-
-  season: {
-    id: number,
-    name: string,
-    code: string | null
-  },
-
-  program: {
-    id: number,
-    name: string,
-    code: string
-  },
-
-  location: {
-    venue: string,
-    address_1: string,
-    address_2: string | null,
-    city: string,
-    region: string,
-    postcode: string,
-    country: string,
-    coordinates: {
-      lat: number,
-      lon: number
-    }
-  },
-
-  divisions: Array<any>,
-  level: string,
-  ongoing: boolean,
-  awards_finalized: boolean,
-  event_type: string | null
-}
-
 /**
  * Contains methods mirrored from RobotEvents API for /events.
  */
@@ -132,7 +91,7 @@ export class Event {
   awards_finalized = false
   event_type = ""
 
-  constructor(eventData: EventData | Object = {}) {
+  constructor(eventData: Object = {}) {
     const entries: any = Object.entries(eventData)
     for (let i = 0; i < entries.length; i++) {
       // @ts-ignore
