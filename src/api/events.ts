@@ -1,6 +1,7 @@
 import { request } from "../funcs"
 import { letters, rounds } from "../data"
 import { Team } from "./teams"
+import { Skills } from "./skills"
 
 /**
  * Fetches event by SKU.
@@ -192,14 +193,20 @@ export class Event {
   async skills(options: {
     teamId?: number,
     type?: string
-  } = {}): Promise<JSON> {
+  } = {}): Promise<Skills[]> {
     let reqUrl: string = `events/${this.id}/skills`
     let reqArgs: string[] = []
 
     if (options.teamId != undefined) reqArgs.push(`team%5B%5D=${options.teamId}`)
     if (options.type != undefined) reqArgs.push(`type%5B%5D=${options.type}`)
 
-    return (await request(reqUrl, reqArgs))
+    const unparsedSkills = await request(reqUrl, reqArgs)
+    const skills = []
+    for (const skillsRun of unparsedSkills) {
+      skills.push(new Skills(skillsRun))
+    }
+
+    return skills
   }
 
   /**
