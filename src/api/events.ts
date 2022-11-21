@@ -184,17 +184,20 @@ export class Event {
    * @example
    * const event = await robotevents.events.get(47030);
    * const skills = await event.skills({
-   *   teamId: 136072
+   *   teamId: 136072,
+   *   type: 'driver'
    * });
    *
    */
    async skills(options: {
-    teamId?: number
+    teamId?: number,
+    type?: string
   } = {}): Promise<Team[]> {
     let reqUrl: string = `events/${this.id}/skills`
     let reqArgs: string[] = []
 
     if (options.teamId != undefined) reqArgs.push(`team%5B%5D=${options.teamId}`)
+    if (options.type != undefined) reqArgs.push(`type%5B%5D=${options.type}`)
 
     return (await request(reqUrl, reqArgs))
   }
