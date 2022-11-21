@@ -2,6 +2,7 @@ import { request, capitalize, getSeasonCode } from "../funcs"
 import { programs, letters, rounds } from "../data"
 import { Event } from "./events"
 import { Skills } from "./skills"
+import { Rankings } from "./rankings"
 
 /**
  * Fetches team by number and program.
@@ -215,7 +216,7 @@ export class Team {
     eventId?: number,
     rank?: number,
     season?: string
-  } = {}): Promise<JSON> {
+  } = {}): Promise<Rankings[]> {
     let reqUrl: string = `teams/${this.id}/rankings`
     let reqArgs: string[] = []
 
@@ -223,7 +224,13 @@ export class Team {
     if (options.rank != undefined) reqArgs.push(`rank%5B%5D=${options.rank}`)
     if (options.season != undefined) reqArgs.push(`season%5B%5D=${getSeasonCode(this.program.code, options.season)}`)
 
-    return (await request(reqUrl, reqArgs))
+    const unparsedRankings = await request(reqUrl, reqArgs)
+    const rankings = []
+    for (const ranking of unparsedRankings) {
+      rankings.push(new Rankings(ranking))
+    }
+
+    return rankings
   }
 
   /**

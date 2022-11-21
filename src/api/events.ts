@@ -2,6 +2,7 @@ import { request } from "../funcs"
 import { letters, rounds } from "../data"
 import { Team } from "./teams"
 import { Skills } from "./skills"
+import { Rankings } from "./rankings"
 
 /**
  * Fetches event by SKU.
@@ -293,7 +294,7 @@ export class Event {
     divId?: number,
     teamId?: number,
     rank?: number
-  } = {}): Promise<JSON> {
+  } = {}): Promise<Rankings[]> {
     options.divId = options.divId ?? 1
     let reqUrl: string = `events/${this.id}/divisions/${options.divId}/rankings`
     let reqArgs: string[] = []
@@ -301,6 +302,12 @@ export class Event {
     if (options.teamId != undefined) reqArgs.push(`team%5B%5D=${options.teamId}`)
     if (options.rank != undefined) reqArgs.push(`rank%5B%5D=${options.rank}`)
 
-    return (await request(reqUrl, reqArgs))
+    const unparsedRankings = await request(reqUrl, reqArgs)
+    const rankings = []
+    for (const ranking of unparsedRankings) {
+      rankings.push(new Rankings(ranking))
+    }
+
+    return rankings
   }
 }
