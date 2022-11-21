@@ -33,9 +33,9 @@ export async function get(id: number): Promise<Team>
 
 export async function get(idNumber: any, program: string = ""): Promise<Team> {
   let
-    reqUrl: String = '',
-    reqArgs: String[] = [],
-    id: Boolean = false, 
+    reqUrl: string = '',
+    reqArgs: string[] = [],
+    id: boolean = false, 
     data: JSON
   
   idNumber = `${idNumber}`
@@ -60,26 +60,26 @@ export async function get(idNumber: any, program: string = ""): Promise<Team> {
 }
 
 export type TeamData = {
-  id: Number,
+  id: number,
 
-  number: String
-  team_name: String
-  robot_name: String | null
-  organization: String
-  registered: Boolean
+  number: string
+  team_name: string
+  robot_name: string | null
+  organization: string
+  registered: boolean
 
-  program: { id: Number, name: String, code: String }
-  grade: String
+  program: { id: number, name: string, code: string }
+  grade: string
 
   location: {
-    venue: String | null,
-    address_1: String | null,
-    address_2: String | null,
-    city: String | null,
-    region: String | null,
-    postcode: String | null,
-    country: String | null,
-    coordinates: { lat: Number, lon: Number }
+    venue: string | null,
+    address_1: string | null,
+    address_2: string | null,
+    city: string | null,
+    region: string | null,
+    postcode: string | null,
+    country: string | null,
+    coordinates: { lat: number, lon: number }
   }
 }
 
