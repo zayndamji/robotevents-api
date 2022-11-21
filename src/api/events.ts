@@ -1,6 +1,6 @@
 import { request } from "../funcs"
 import { letters } from "../data"
-import { Team, Grade } from "./teams"
+import { Team } from "./teams"
 
 /**
  * Fetches event by SKU.
@@ -148,7 +148,7 @@ export class Event {
    * const teams = await event.teams({
    *  number: '23900B',
    *  registered: false,
-   *  grade: robotevents.teams.Grade.MiddleSchool,
+   *  grade: "Middle School",
    *  country: 'US'
    * });
    *
@@ -156,7 +156,7 @@ export class Event {
   async teams(options: {
     number?: string,
     registered?: boolean,
-    grade?: Grade,
+    grade?: string,
     country?: string
   } = {}): Promise<Team[]> {
     let reqUrl: string = `events/${this.id}/teams`

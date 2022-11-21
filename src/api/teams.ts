@@ -2,13 +2,6 @@ import { request, capitalize, getSeasonCode } from "../funcs"
 import { programs, letters, rounds } from "../data"
 import { Event } from "./events"
 
-export enum Grade {
-  College = "College",
-  HighSchool = "High School",
-  MiddleSchool = "Middle School",
-  ElementarySchool = "Elementary School"
-}
-
 /**
  * Fetches team by number and program.
  * @param number Team Number
