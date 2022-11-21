@@ -208,9 +208,9 @@ export class Event {
    * @param options Object of perameters, mirrored from RobotEvents API - /events/{id}/awards
    * 
    * @example
-   * const event = await robotevents.events.get('RE-VRC-22-9460');
+   * const event = await robotevents.events.get('RE-VRC-22-0008');
    * const awards = await event.awards({
-   *   teamId: 136072,
+   *   teamId: 139290,
    *   winner: '392X'
    * });
    *
@@ -224,6 +224,38 @@ export class Event {
 
     if (options.teamId != undefined) reqArgs.push(`team%5B%5D=${options.teamId}`)
     if (options.winner != undefined) reqArgs.push(`winner%5B%5D=${options.winner}`)
+
+    return (await request(reqUrl, reqArgs))
+  }
+
+  /**
+   * Fetches matches of an event (by division).
+   * 
+   * @param options Object of perameters, mirrored from RobotEvents API - /events/{id}/divisions/{div}/matches
+   * 
+   * @example
+   * const event = await robotevents.events.get('RE-VRC-22-0008');
+   * const matches = await event.matches({
+   *   divId: 1,
+   *   teamId: 139290,
+   *   instance: 1,
+   *   matchnum: 4
+   * });
+   *
+   */
+  async matches(options: {
+    divId?: number,
+    teamId?: number,
+    instance?: number,
+    matchnum?: number
+  } = {}): Promise<Team[]> {
+    options.divId = options.divId ?? 1
+    let reqUrl: string = `events/${this.id}/divisions/${options.divId}/matches`
+    let reqArgs: string[] = []
+
+    if (options.teamId != undefined) reqArgs.push(`team%5B%5D=${options.teamId}`)
+    if (options.instance != undefined) reqArgs.push(`instance%5B%5D=${options.instance}`)
+    if (options.matchnum != undefined) reqArgs.push(`matchnum%5B%5D=${options.matchnum}`)
 
     return (await request(reqUrl, reqArgs))
   }
