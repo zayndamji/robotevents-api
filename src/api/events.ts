@@ -1,5 +1,5 @@
 import { request } from "../funcs"
-import { letters } from "../data"
+import { letters, rounds } from "../data"
 import { Team } from "./teams"
 
 /**
@@ -238,6 +238,7 @@ export class Event {
    * const matches = await event.matches({
    *   divId: 1,
    *   teamId: 139290,
+   *   round: 'qualifications',
    *   instance: 1,
    *   matchnum: 4
    * });
@@ -246,6 +247,7 @@ export class Event {
   async matches(options: {
     divId?: number,
     teamId?: number,
+    round?: string,
     instance?: number,
     matchnum?: number
   } = {}): Promise<Team[]> {
@@ -254,6 +256,12 @@ export class Event {
     let reqArgs: string[] = []
 
     if (options.teamId != undefined) reqArgs.push(`team%5B%5D=${options.teamId}`)
+    if (options.round != undefined) {
+      options.round == options.round.toLowerCase()
+      if (options.round.substring(0, 4) in rounds) { // @ts-ignore
+        reqArgs.push(`round%5B%5D=${rounds[options.round.substring(0, 4)]}`)
+      }
+    }
     if (options.instance != undefined) reqArgs.push(`instance%5B%5D=${options.instance}`)
     if (options.matchnum != undefined) reqArgs.push(`matchnum%5B%5D=${options.matchnum}`)
 
