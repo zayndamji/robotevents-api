@@ -1,6 +1,6 @@
 import { request } from "../funcs"
 import { letters } from "../data"
-import { Team } from "./teams"
+import { Team, Grade } from "./teams"
 
 /**
  * Fetches event by SKU.
@@ -148,6 +148,7 @@ export class Event {
    * const teams = await event.teams({
    *  number: '23900B',
    *  registered: false,
+   *  grade: robotevents.teams.Grade.MiddleSchool,
    *  country: 'US'
    * });
    *
@@ -155,6 +156,7 @@ export class Event {
   async teams(options: {
     number?: string,
     registered?: boolean,
+    grade?: Grade,
     country?: string
   } = {}): Promise<Team[]> {
     let reqUrl: string = `events/${this.id}/teams`
@@ -162,6 +164,7 @@ export class Event {
 
     if (options.number != undefined) reqArgs.push(`number%5B%5D=${options.number.toUpperCase()}`)
     if (options.registered != undefined) reqArgs.push(`registered=${options.registered}`)
+    if (options.grade != undefined) reqArgs.push(`grade=${options.grade}`)
     if (options.country != undefined) reqArgs.push(`country%5B%5D=${options.country}`)
 
     const unparsedTeams = await request(reqUrl, reqArgs)
