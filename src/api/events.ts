@@ -189,7 +189,7 @@ export class Event {
    * });
    *
    */
-   async skills(options: {
+  async skills(options: {
     teamId?: number,
     type?: string
   } = {}): Promise<Team[]> {
@@ -198,6 +198,32 @@ export class Event {
 
     if (options.teamId != undefined) reqArgs.push(`team%5B%5D=${options.teamId}`)
     if (options.type != undefined) reqArgs.push(`type%5B%5D=${options.type}`)
+
+    return (await request(reqUrl, reqArgs))
+  }
+
+  /**
+   * Fetches awards of an event.
+   * 
+   * @param options Object of perameters, mirrored from RobotEvents API - /events/{id}/awards
+   * 
+   * @example
+   * const event = await robotevents.events.get('RE-VRC-22-9460');
+   * const awards = await event.awards({
+   *   teamId: 136072,
+   *   winner: '392X'
+   * });
+   *
+   */
+  async awards(options: {
+    teamId?: number,
+    winner?: string
+  } = {}): Promise<Team[]> {
+    let reqUrl: string = `events/${this.id}/awards`
+    let reqArgs: string[] = []
+
+    if (options.teamId != undefined) reqArgs.push(`team%5B%5D=${options.teamId}`)
+    if (options.winner != undefined) reqArgs.push(`winner%5B%5D=${options.winner}`)
 
     return (await request(reqUrl, reqArgs))
   }
