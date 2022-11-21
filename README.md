@@ -62,4 +62,6 @@ const event = await robotevents.events.get('RE-VRC-22-7950');
 const teams = await event.teams({ /* put optional parameters here */ });
 const skills = await event.skills({ /* put optional parameters here */ });
 const awards = await event.awards({ /* put optional parameters here */ });
+const matches = await event.matches({ /* put optional parameters here */ });
+const rankings = await event.rankings({ /* put optional parameters here */ });
 ```  
