@@ -47,44 +47,44 @@ export async function get(idSku: any): Promise<Event> {
 }
 
 export type EventData = {
-  id: Number,
-  sku: String,
+  id: number,
+  sku: string,
 
-  name: String,
-  start: String,
-  end: String,
+  name: string,
+  start: string,
+  end: string,
 
   season: {
-    id: Number,
-    name: String,
-    code: null
+    id: number,
+    name: string,
+    code: string | null
   },
 
   program: {
-    id: Number,
-    name: String,
-    code: String
+    id: number,
+    name: string,
+    code: string
   },
 
   location: {
-    venue: String,
-    address_1: String,
-    address_2: String | null,
-    city: String,
-    region: String,
-    postcode: String,
-    country: String,
+    venue: string,
+    address_1: string,
+    address_2: string | null,
+    city: string,
+    region: string,
+    postcode: string,
+    country: string,
     coordinates: {
-      lat: Number,
-      lon: Number
+      lat: number,
+      lon: number
     }
   },
 
   divisions: Array<any>,
-  level: String,
-  ongoing: Boolean,
-  awards_finalized: Boolean,
-  event_type: String | null
+  level: string,
+  ongoing: boolean,
+  awards_finalized: boolean,
+  event_type: string | null
 }
 
 /**
