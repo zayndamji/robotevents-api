@@ -1,5 +1,5 @@
-import { request, capitalize, getSeasonCode } from "../funcs"
-import { programs, letters, rounds } from "../data"
+import { request, capitalize, getSeasonCode, getProgramCode } from "../funcs"
+import { letters, rounds } from "../data"
 import { Event } from "./events"
 import { Skills } from "./skills"
 import { Rankings } from "./rankings"
@@ -45,8 +45,7 @@ export async function get(idNumber: any, program: string = ""): Promise<Team> {
   }
   
   program = program.toUpperCase()
-  // @ts-ignore
-  if (program in programs) reqArgs.push(`program%5B%5D=${programs[program]}`)
+  if (program.length > 2) reqArgs.push(`program%5B%5D=${getProgramCode(program)}`)
     
   data = await request(reqUrl, reqArgs)
   

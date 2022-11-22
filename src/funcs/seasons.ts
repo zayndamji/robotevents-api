@@ -1,4 +1,4 @@
-export const seasons = {
+const seasons = {
   "VRC": {
       "2022-2023": 173,
       "2021-2022": 154,
@@ -81,5 +81,11 @@ export const seasons = {
   },
   "VAIC": {
       "2021-2022": 171
+  }
+}
+
+export function getSeasonCode(code: string, season: string): number | undefined { // @ts-ignore
+  if (seasons[code].hasOwnProperty(season)) { // @ts-ignore
+    return seasons[code][season]
   }
 }

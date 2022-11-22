@@ -12,3 +12,9 @@ export const programs = {
   "FAC": 56,
   "VAIC": 57
 }
+
+export function getProgramCode(program: string): number | undefined { // @ts-ignore
+  if (programs.hasOwnProperty(program)) { // @ts-ignore
+    return programs[program]
+  }
+}
