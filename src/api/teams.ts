@@ -1,4 +1,4 @@
-import { request, capitalize, getSeasonCode, getProgramCode } from "../funcs"
+import { request, capitalize, getSeasonCode, Programs } from "../funcs"
 import { letters, rounds } from "../data"
 import { Event } from "./events"
 import { Skills } from "./skills"
@@ -14,7 +14,7 @@ import { Rankings } from "./rankings"
  * const team = await robotevents.teams.get('392X', 'VRC');
  *
  */
-export async function get(number: string, program: string): Promise<Team>
+export async function get(number: string, program: Programs): Promise<Team>
 
 /**
  * Fetches team by RobotEvents id.
@@ -26,7 +26,7 @@ export async function get(number: string, program: string): Promise<Team>
  */
 export async function get(id: number): Promise<Team>
 
-export async function get(idNumber: any, program: string = ""): Promise<Team> {
+export async function get(idNumber: any, program: Programs = Programs.DEFAULT): Promise<Team> {
   let
     reqUrl: string = '',
     reqArgs: string[] = [],
@@ -44,8 +44,7 @@ export async function get(idNumber: any, program: string = ""): Promise<Team> {
     reqArgs.push(`number%5B%5D=${idNumber}`)
   }
   
-  program = program.toUpperCase()
-  if (program.length > 2) reqArgs.push(`program%5B%5D=${getProgramCode(program)}`)
+  if (program != Programs.DEFAULT) reqArgs.push(`program%5B%5D=${program}`)
     
   data = await request(reqUrl, reqArgs)
   
