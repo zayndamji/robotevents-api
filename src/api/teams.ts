@@ -1,4 +1,4 @@
-import { request, capitalize, getSeasonCode } from "../funcs"
+import { request, capitalize, Seasons } from "../funcs"
 import { letters, rounds } from "../data"
 import { Event } from "./events"
 import { Skills } from "./skills"
@@ -113,9 +113,8 @@ export class Team {
     let reqUrl: string = `teams/${this.id}/events`
     let reqArgs: string[] = []
 
-    if (options.sku != undefined) reqArgs.push(`sku%5B%5D=${options.sku}`)
-
-    if (options.season != undefined) reqArgs.push(`season%5B%5D=${getSeasonCode(this.program.code, options.season)}`)
+    if (options.sku != undefined) reqArgs.push(`sku%5B%5D=${options.sku}`) // @ts-ignore
+    if (options.season != undefined) reqArgs.push(`season%5B%5D=${Seasons[this.program.code.toUpperCase()][options.season]}`)
     
     if (options.start != undefined) reqArgs.push(`start=${options.start}`)
     if (options.end != undefined) reqArgs.push(`end=${options.end}`)
@@ -159,8 +158,8 @@ export class Team {
     let reqUrl: string = `teams/${this.id}/matches`
     let reqArgs: string[] = []
 
-    if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`)
-    if (options.season != undefined) reqArgs.push(`season%5B%5D=${getSeasonCode(this.program.code, options.season)}`)
+    if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`) // @ts-ignore
+    if (options.season != undefined) reqArgs.push(`season%5B%5D=${Seasons[this.program.code.toUpperCase()][options.season]}`)
     if (options.round != undefined) {
       options.round == options.round.toLowerCase()
       if (options.round.substring(0, 4) in rounds) { // @ts-ignore
@@ -196,8 +195,8 @@ export class Team {
     let reqArgs: string[] = []
 
     if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`)
-    if (options.rank != undefined) reqArgs.push(`rank%5B%5D=${options.rank}`)
-    if (options.season != undefined) reqArgs.push(`season%5B%5D=${getSeasonCode(this.program.code, options.season)}`)
+    if (options.rank != undefined) reqArgs.push(`rank%5B%5D=${options.rank}`) // @ts-ignore
+    if (options.season != undefined) reqArgs.push(`season%5B%5D=${Seasons[this.program.code.toUpperCase()][options.season]}`)
 
     const unparsedRankings = await request(reqUrl, reqArgs)
     const rankings = []
@@ -231,8 +230,8 @@ export class Team {
     let reqArgs: string[] = []
 
     if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`)
-    if (options.type != undefined) reqArgs.push(`type%5B%5D=${options.type.toLowerCase()}`)
-    if (options.season != undefined) reqArgs.push(`season%5B%5D=${getSeasonCode(this.program.code, options.season)}`)
+    if (options.type != undefined) reqArgs.push(`type%5B%5D=${options.type.toLowerCase()}`) // @ts-ignore
+    if (options.season != undefined) reqArgs.push(`season%5B%5D=${Seasons[this.program.code.toUpperCase()][options.season]}`)
 
     const unparsedSkills = await request(reqUrl, reqArgs)
     const skills = []
@@ -263,8 +262,8 @@ export class Team {
     let reqUrl: string = `teams/${this.id}/awards`
     let reqArgs: string[] = []
 
-    if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`)
-    if (options.season != undefined) reqArgs.push(`season%5B%5D=${getSeasonCode(this.program.code, options.season)}`)
+    if (options.eventId != undefined) reqArgs.push(`event%5B%5D=${options.eventId}`) // @ts-ignore
+    if (options.season != undefined) reqArgs.push(`season%5B%5D=${Seasons[this.program.code.toUpperCase()][options.season]}`)
 
     return (await request(reqUrl, reqArgs))
   }
