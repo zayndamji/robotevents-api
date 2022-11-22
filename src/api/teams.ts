@@ -1,8 +1,9 @@
-import { request, capitalize, getSeasonCode, Programs } from "../funcs"
+import { request, capitalize, getSeasonCode } from "../funcs"
 import { letters, rounds } from "../data"
 import { Event } from "./events"
 import { Skills } from "./skills"
 import { Rankings } from "./rankings"
+import { Programs } from "./programs"
 
 /**
  * Fetches team by number and program.
