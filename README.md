@@ -8,9 +8,9 @@ This is a wrapper for the RobotEvents API:
 https://www.robotevents.com/api/v2  
 
 Currently it's in the Alpha phase supporting  
-\- getting Team(s) - events, matches, rankings, skills, and awards.   
-\- getting Event(s) - teams, skills, and awards.  
-There are still limited parameters compared to the actual RobotEvents API.
+\- getting Team(s), including the events, matches, rankings, skills, and awards.  
+\- getting Event(s), including the teams, matches, rankings, skills, and awards.  
+There are still limited parameters compared to the actual RobotEvents API, as programs / seasons aren't in the API with get() commands yet.
 
 ## Installation
 
