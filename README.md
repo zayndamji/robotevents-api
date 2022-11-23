@@ -48,7 +48,7 @@ This is required because all functions ran using this package are ``async``, mea
 
 To fetch a ``Team``, use the method ``robotevents.teams.get(number, program)``. Replace ``number`` with the team number (ex. 392X or 23900B) and replace ``program`` with the program (ex. VRC or VIQC).
 ```javascript
-const team = await robotevents.teams.get('392X', 'VRC');
+const team = await robotevents.teams.get('392X', robotevents.Programs.VRC);
 const events = await team.events({ /* put optional parameters here */ });
 const matches = await team.matches({ /* put optional parameters here */ });
 const rankings = await team.rankings({ /* put optional parameters here */ });

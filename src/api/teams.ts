@@ -12,7 +12,7 @@ import { Programs } from "./programs"
  *
  * @example
  * const team = await robotevents.teams.get('392X');
- * const team = await robotevents.teams.get('392X', 'VRC');
+ * const team = await robotevents.teams.get('392X', robotevents.Programs.VRC);
  *
  */
 export async function get(number: string, program: Programs): Promise<Team>
