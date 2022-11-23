@@ -1,5 +1,7 @@
-import { request } from "../funcs"
-import { letters, rounds } from "../data"
+import { request } from "../funcs/request"
+import { letters } from "../data/letters"
+import { rounds } from "../data/rounds"
+
 import { Team } from "./teams"
 import { Skills } from "./skills"
 import { Rankings } from "./rankings"

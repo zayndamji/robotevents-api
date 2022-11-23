@@ -1,5 +1,9 @@
-import { request, capitalize, Seasons } from "../funcs"
-import { letters, rounds } from "../data"
+import { request } from "../funcs/request"
+import { capitalize } from "../funcs/capitalize"
+import { Seasons } from "../funcs/seasons"
+import { letters } from "../data/letters"
+import { rounds } from "../data/rounds"
+
 import { Event } from "./events"
 import { Skills } from "./skills"
 import { Rankings } from "./rankings"
