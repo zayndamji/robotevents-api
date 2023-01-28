@@ -7,4 +7,4 @@ export { Programs } from './api/programs'
 
 export { setToken, request } from './funcs/request'
 
-export const version: string = '0.2.14'
+export const version: string = '0.3.0'
