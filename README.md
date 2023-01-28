@@ -19,23 +19,12 @@ To start using this package, install it using ``npm`` and a ``terminal``. Enter 
 npm install robotevents-api
 ```
 
-Also install the dotenv package:  
-https://www.npmjs.com/package/dotenv  
-```
-npm install dotenv
-```
-
-In a .env file in the directory with your app.js file, add your RobotEvents token with the key of 'TOKEN'.  
-
-<img src="https://github.com/zaypers/robotevents-api/raw/main/assets/source-dir.png" style="width: 14em"><br>  
-
-Example (this is not a real token):  
-<img src="https://github.com/zaypers/robotevents-api/raw/main/assets/dotenv-token.png">  
-
 ## Usage
 
 In your ``app.js`` or ``index.js`` file, start by writing:  
 ```javascript
+const robotevents = require('robotevents-api');
+
 main();
 
 async function main() {
@@ -43,6 +32,17 @@ async function main() {
 };
 ```  
 This is required because all functions ran using this package are ``async``, meaning they run in the background. Whenever you call a method, you will have to use the keyword ``await`` before it.  
+
+To set your RobotEvents token, use the ```robotevents.setToken()``` command.
+```javascript
+const robotevents = require('robotevents-api');
+
+main();
+
+async function main() {
+  robotevents.setToken('your-token-here');
+};
+```  
 
 ## Documentation
 
