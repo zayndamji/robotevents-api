@@ -1,6 +1,10 @@
 import nodeFetch from 'node-fetch'
 
-const token = process.env.TOKEN || process.env.REACT_APP_TOKEN || ''
+let token = ''
+
+export function setToken(newToken: string) {
+  token = newToken
+}
 
 export async function request(url: String, args: String[] = []): Promise<any> {
   let 

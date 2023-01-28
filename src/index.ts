@@ -5,6 +5,6 @@ export * as rankings from './api/rankings'
 
 export { Programs } from './api/programs'
 
-export { request } from './funcs/request'
+export { setToken, request } from './funcs/request'
 
 export const version: string = '0.2.14'
