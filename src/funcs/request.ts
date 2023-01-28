@@ -24,7 +24,7 @@ export async function request(url: String, args: String[] = []): Promise<any> {
     const json = await fetched.json()
     if (json.data != undefined) {
       if (json.data[0] != undefined) {
-        data = data.concat(data, json.data)
+        data = data.concat(json.data)
       }
       isNextPage = json.meta['next_page_url']
     }
