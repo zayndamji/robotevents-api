@@ -1,9 +1,13 @@
 import nodeFetch from 'node-fetch'
 
-let token = ''
+let token = '', mode = 'token'
 
 export function setToken(newToken: string) {
   token = newToken
+}
+
+export function setMode(newMode: string) {
+  mode = newMode
 }
 
 export async function request(url: String, args: String[] = []): Promise<any> {
@@ -19,10 +23,13 @@ export async function request(url: String, args: String[] = []): Promise<any> {
 
   while (isNextPage != null) {
     const fetched = await nodeFetch(`https://www.robotevents.com/api/v2/${url}?per_page=100&page=${currentIndex}${argsStr}`, {
-      headers: {
+      headers: mode == 'token' ? {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
-      }
+      } : mode == 'cookie' ? {
+        'Accept': 'application/json',
+        'Cookie': token
+      } : {}
     })
 
     const json = await fetched.json()
