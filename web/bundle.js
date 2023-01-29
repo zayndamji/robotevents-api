@@ -1,6 +1,4 @@
-(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-const robotevents = require('robotevents-api');
-},{"robotevents-api":12}],2:[function(require,module,exports){
+require=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Event = exports.get = void 0;
@@ -220,7 +218,7 @@ class Event {
 }
 exports.Event = Event;
 
-},{"../data/letters":7,"../data/rounds":8,"../funcs/request":10,"./rankings":4,"./skills":5,"./teams":6}],3:[function(require,module,exports){
+},{"../data/letters":6,"../data/rounds":7,"../funcs/request":9,"./rankings":3,"./skills":4,"./teams":5}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Programs = void 0;
@@ -241,7 +239,7 @@ var Programs;
     Programs[Programs["VAIC"] = 57] = "VAIC";
 })(Programs = exports.Programs || (exports.Programs = {}));
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Rankings = void 0;
@@ -282,7 +280,7 @@ class Rankings {
 }
 exports.Rankings = Rankings;
 
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Skills = void 0;
@@ -318,7 +316,7 @@ class Skills {
 }
 exports.Skills = Skills;
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Team = exports.get = void 0;
@@ -535,13 +533,13 @@ class Team {
 }
 exports.Team = Team;
 
-},{"../data/letters":7,"../data/rounds":8,"../funcs/capitalize":9,"../funcs/request":10,"../funcs/seasons":11,"./events":2,"./programs":3,"./rankings":4,"./skills":5}],7:[function(require,module,exports){
+},{"../data/letters":6,"../data/rounds":7,"../funcs/capitalize":8,"../funcs/request":9,"../funcs/seasons":10,"./events":1,"./programs":2,"./rankings":3,"./skills":4}],6:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.letters = void 0;
 exports.letters = /a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z/;
 
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.rounds = void 0;
@@ -554,7 +552,7 @@ exports.rounds = {
     "roun": 6
 };
 
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.capitalize = void 0;
@@ -563,7 +561,7 @@ function capitalize(str) {
 }
 exports.capitalize = capitalize;
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.request = exports.setMode = exports.setToken = void 0;
@@ -609,7 +607,7 @@ async function request(url, args = []) {
 }
 exports.request = request;
 
-},{"node-fetch":13}],11:[function(require,module,exports){
+},{"node-fetch":11}],10:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Seasons = void 0;
@@ -699,23 +697,7 @@ exports.Seasons = {
     }
 };
 
-},{}],12:[function(require,module,exports){
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.version = exports.request = exports.setMode = exports.setToken = exports.Programs = exports.rankings = exports.skills = exports.events = exports.teams = void 0;
-exports.teams = require("./api/teams");
-exports.events = require("./api/events");
-exports.skills = require("./api/skills");
-exports.rankings = require("./api/rankings");
-var programs_1 = require("./api/programs");
-Object.defineProperty(exports, "Programs", { enumerable: true, get: function () { return programs_1.Programs; } });
-var request_1 = require("./funcs/request");
-Object.defineProperty(exports, "setToken", { enumerable: true, get: function () { return request_1.setToken; } });
-Object.defineProperty(exports, "setMode", { enumerable: true, get: function () { return request_1.setMode; } });
-Object.defineProperty(exports, "request", { enumerable: true, get: function () { return request_1.request; } });
-exports.version = '0.3.1';
-
-},{"./api/events":2,"./api/programs":3,"./api/rankings":4,"./api/skills":5,"./api/teams":6,"./funcs/request":10}],13:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 
@@ -744,4 +726,20 @@ exports.Request = globalObject.Request;
 exports.Response = globalObject.Response;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[1]);
+},{}],"robotevents-api":[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.version = exports.request = exports.setMode = exports.setToken = exports.Programs = exports.rankings = exports.skills = exports.events = exports.teams = void 0;
+exports.teams = require("./api/teams");
+exports.events = require("./api/events");
+exports.skills = require("./api/skills");
+exports.rankings = require("./api/rankings");
+var programs_1 = require("./api/programs");
+Object.defineProperty(exports, "Programs", { enumerable: true, get: function () { return programs_1.Programs; } });
+var request_1 = require("./funcs/request");
+Object.defineProperty(exports, "setToken", { enumerable: true, get: function () { return request_1.setToken; } });
+Object.defineProperty(exports, "setMode", { enumerable: true, get: function () { return request_1.setMode; } });
+Object.defineProperty(exports, "request", { enumerable: true, get: function () { return request_1.request; } });
+exports.version = '0.3.1';
+
+},{"./api/events":1,"./api/programs":2,"./api/rankings":3,"./api/skills":4,"./api/teams":5,"./funcs/request":9}]},{},[]);
