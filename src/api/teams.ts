@@ -7,6 +7,7 @@ import { rounds } from "../data/rounds"
 import { Event } from "./events"
 import { Skills } from "./skills"
 import { Rankings } from "./rankings"
+import { Match } from "./matches"
 import { Programs } from "./programs"
 
 /**
@@ -158,7 +159,7 @@ export class Team {
     round?: string,
     instance?: number,
     matchnum?: number
-  } = {}): Promise<JSON> {
+  } = {}): Promise<Match[]> {
     let reqUrl: string = `teams/${this.id}/matches`
     let reqArgs: string[] = []
 
@@ -173,7 +174,13 @@ export class Team {
     if (options.instance != undefined) reqArgs.push(`instance%5B%5D=${options.instance}`)
     if (options.matchnum != undefined) reqArgs.push(`matchnum%5B%5D=${options.matchnum}`)
   
-    return (await request(reqUrl, reqArgs))
+    const unparsedMatches = await request(reqUrl, reqArgs)
+    const matches = []
+    for (const match of unparsedMatches) {
+      matches.push(new Match(match))
+    }
+
+    return matches
   }
 
   /**
