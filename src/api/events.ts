@@ -5,6 +5,7 @@ import { rounds } from "../data/rounds"
 import { Team } from "./teams"
 import { Skills } from "./skills"
 import { Rankings } from "./rankings"
+import { Match } from "./matches"
 
 /**
  * Fetches event by SKU.
@@ -219,7 +220,7 @@ export class Event {
     round?: string,
     instance?: number,
     matchnum?: number
-  } = {}): Promise<JSON> {
+  } = {}): Promise<Match[]> {
     options.divId = options.divId ?? 1
     let reqUrl: string = `events/${this.id}/divisions/${options.divId}/matches`
     let reqArgs: string[] = []
@@ -234,7 +235,13 @@ export class Event {
     if (options.instance != undefined) reqArgs.push(`instance%5B%5D=${options.instance}`)
     if (options.matchnum != undefined) reqArgs.push(`matchnum%5B%5D=${options.matchnum}`)
 
-    return (await request(reqUrl, reqArgs))
+    const unparsedMatches = await request(reqUrl, reqArgs)
+    const matches = []
+    for (const match of unparsedMatches) {
+      matches.push(new Match(match))
+    }
+
+    return matches
   }
 
   /**
