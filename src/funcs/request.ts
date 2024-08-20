@@ -1,6 +1,7 @@
 import nodeFetch from 'node-fetch'
+import * as fs from 'fs'
 
-let token = '', mode = 'token'
+let token = '', mode = 'token', cache: string | undefined = undefined
 
 export function setToken(newToken: string) {
   token = newToken
@@ -8,6 +9,22 @@ export function setToken(newToken: string) {
 
 export function setMode(newMode: string) {
   mode = newMode
+}
+
+export function setCache(newCache: string) {
+  cache = newCache
+}
+
+export function getCache(file: string): JSON | undefined {
+  if (cache == undefined) {
+    return undefined
+  }
+  
+  if (!fs.existsSync(cache + '/' + file)) {
+    return undefined
+  }
+
+  return JSON.parse(fs.readFileSync(cache + '/' + file).toString())
 }
 
 export async function request(url: String, args: String[] = []): Promise<any> {
@@ -19,6 +36,11 @@ export async function request(url: String, args: String[] = []): Promise<any> {
   
   for (let i = 0; i < args.length; i++) {
     argsStr += `&${args[i]}`
+  }
+
+  const cached = getCache("" + url.replace(/\//g, '') + argsStr)
+  if (cached != undefined) {
+    return cached
   }
 
   while (isNextPage != null) {
@@ -44,6 +66,10 @@ export async function request(url: String, args: String[] = []): Promise<any> {
       isNextPage = null
     }
     currentIndex++
+  }
+
+  if (cache != undefined) {
+    fs.writeFileSync(cache + '/' + url.replace(/\//g, '') + argsStr, JSON.stringify(data))
   }
 
   return data
