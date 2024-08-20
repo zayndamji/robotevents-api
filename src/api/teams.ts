@@ -16,8 +16,8 @@ import { Programs } from "./programs"
  * @param program Program
  *
  * @example
- * const team = await robotevents.teams.get('392X');
- * const team = await robotevents.teams.get('392X', robotevents.Programs.VRC);
+ * const team = await robotevents.teams.get('11101B');
+ * const team = await robotevents.teams.get('11101B', robotevents.Programs.V5RC);
  *
  */
 export async function get(number: string, program: Programs): Promise<Team>
@@ -27,7 +27,7 @@ export async function get(number: string, program: Programs): Promise<Team>
  * @param id RobotEvents ID
  *
  * @example
- * const team = await robotevents.teams.get(136072);
+ * const team = await robotevents.teams.get(86313);
  *
  */
 export async function get(id: number): Promise<Team>
@@ -98,13 +98,13 @@ export class Team {
    * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/events
    * 
    * @example
-   * const team = await robotevents.teams.get('23900B', 'VRC');
+   * const team = await robotevents.teams.get('11101B', robotevents.Programs.V5RC);
    * const events = await team.events({
-   *  sku: 'RE-VRC-21-5434',
-   *  season: '2021-2022',
-   *  start: '2022-05-02T00:00:00Z',
-   *  end: '2022-05-06T00:00:00Z',
-   *  level: 'World'
+   *  sku: 'RE-V5RC-24-5557',
+   *  season: '2024-2025',
+   *  start: '2024-08-01T00:00:00Z',
+   *  end: '2022-08-05T00:00:00Z',
+   *  level: 'Signature'
    * });
    *
    */
@@ -144,11 +144,11 @@ export class Team {
    * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/matches
    * 
    * @example
-   * const team = await robotevents.teams.get('23900B', 'VRC');
+   * const team = await robotevents.teams.get('11101B', robotevents.Programs.V5RC);
    * const matches = await team.matches({
-   *   eventId: 45414,
-   *   season: '2021-2022',
-   *   round: 'round-of-16',
+   *   eventId: 55557,
+   *   season: '2024-2025',
+   *   round: 'finals',
    *   instance: 1,
    *   matchnum: 1
    * });
@@ -189,11 +189,11 @@ export class Team {
    * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/rankings
    * 
    * @example
-   * const team = await robotevents.teams.get('23900B', 'VRC');
+   * const team = await robotevents.teams.get('11101B', robotevents.Programs.V5RC);
    * const rankings = await team.rankings({
-   *   eventId: 46025,
-   *   rank: 19,
-   *   season: "2021-2022"
+   *   eventId: 55557,
+   *   rank: 7,
+   *   season: "2024-2025"
    * });
    *
    */
@@ -224,11 +224,11 @@ export class Team {
    * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/skills
    * 
    * @example
-   * const team = await robotevents.teams.get('23900B', 'VRC');
+   * const team = await robotevents.teams.get('11101B', robotevents.Programs.V5RC);
    * const skills = await team.skills({
-   *   eventId: 47030,
+   *   eventId: 55557,
    *   type: 'driver',
-   *   season: '2021-2022'
+   *   season: '2024-2025'
    * });
    *
    */
@@ -259,10 +259,10 @@ export class Team {
    * @param options Object of perameters, mirrored from RobotEvents API - /teams/{id}/awards
    * 
    * @example
-   * const team = await robotevents.teams.get('315B', 'VRC');
+   * const team = await robotevents.teams.get('11101B', robotevents.Programs.V5RC);
    * const awards = await team.awards({
-   *   eventId: 47030,
-   *   season: '2020-2021'
+   *   eventId: 55557,
+   *   season: '2024-2025'
    * });
    *
    */

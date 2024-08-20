@@ -12,7 +12,7 @@ import { Match } from "./matches"
  * @param sku Event SKU
  *
  * @example
- * const event = await robotevents.events.get('RE-VRC-22-7950');
+ * const event = await robotevents.events.get('RE-V5RC-24-5557');
  *
  */
 export async function get(sku: string): Promise<Event>
@@ -22,7 +22,7 @@ export async function get(sku: string): Promise<Event>
  * @param id RobotEvents ID
  *
  * @example
- * const event = await robotevents.events.get(47950);
+ * const event = await robotevents.events.get(55557);
  *
  */
 export async function get(id: number): Promise<Event>
@@ -108,11 +108,11 @@ export class Event {
    * @param options Object of perameters, mirrored from RobotEvents API - /events/{id}/teams
    * 
    * @example
-   * const event = await robotevents.events.get('RE-VRC-21-7030');
+   * const event = await robotevents.events.get('RE-V5RC-24-5557');
    * const teams = await event.teams({
-   *  number: '23900B',
-   *  registered: false,
-   *  grade: "Middle School",
+   *  number: '11101B',
+   *  registered: true,
+   *  grade: "High School",
    *  country: 'US'
    * });
    *
@@ -146,9 +146,9 @@ export class Event {
    * @param options Object of perameters, mirrored from RobotEvents API - /events/{id}/skills
    * 
    * @example
-   * const event = await robotevents.events.get(47030);
+   * const event = await robotevents.events.get('RE-V5RC-24-5557');
    * const skills = await event.skills({
-   *   teamId: 136072,
+   *   teamId: 86313,
    *   type: 'driver'
    * });
    *
@@ -178,10 +178,10 @@ export class Event {
    * @param options Object of perameters, mirrored from RobotEvents API - /events/{id}/awards
    * 
    * @example
-   * const event = await robotevents.events.get('RE-VRC-22-0008');
+   * const event = await robotevents.events.get('RE-V5RC-24-5557');
    * const awards = await event.awards({
-   *   teamId: 139290,
-   *   winner: '392X'
+   *   teamId: 86313,
+   *   winner: '11101B'
    * });
    *
    */
@@ -204,13 +204,13 @@ export class Event {
    * @param options Object of perameters, mirrored from RobotEvents API - /events/{id}/divisions/{div}/matches
    * 
    * @example
-   * const event = await robotevents.events.get('RE-VRC-22-0008');
+   * const event = await robotevents.events.get('RE-V5RC-24-5557');
    * const matches = await event.matches({
    *   divId: 1,
-   *   teamId: 139290,
+   *   teamId: 86313,
    *   round: 'qualifications',
    *   instance: 1,
-   *   matchnum: 4
+   *   matchnum: 16
    * });
    *
    */
@@ -250,11 +250,11 @@ export class Event {
    * @param options Object of perameters, mirrored from RobotEvents API - /events/{id}/divisions/{div}/rankings
    * 
    * @example
-   * const event = await robotevents.events.get('RE-VRC-22-0008');
+   * const event = await robotevents.events.get('RE-V5RC-24-5557');
    * const rankings = await event.rankings({
    *   divId: 1,
-   *   teamId: 139290,
-   *   rank: 2
+   *   teamId: 86313,
+   *   rank: 7
    * });
    *
    */

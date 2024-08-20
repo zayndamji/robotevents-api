@@ -46,9 +46,9 @@ async function main() {
 
 ## Documentation
 
-To fetch a ``Team``, use the method ``robotevents.teams.get(number, program)``. Replace ``number`` with the team number (ex. 392X or 23900B) and replace ``program`` with the program (ex. VRC or VIQC).
+To fetch a ``Team``, use the method ``robotevents.teams.get(number, program)``. Replace ``number`` with the team number (ex. 11101B) and replace ``program`` with the program (ex. V5RC or VIQRC).
 ```javascript
-const team = await robotevents.teams.get('392X', robotevents.Programs.VRC);
+const team = await robotevents.teams.get('11101B', robotevents.Programs.V5RC);
 const events = await team.events({ /* put optional parameters here */ });
 const matches = await team.matches({ /* put optional parameters here */ });
 const rankings = await team.rankings({ /* put optional parameters here */ });
@@ -56,9 +56,9 @@ const skills = await team.skills({ /* put optional parameters here */ });
 const awards = await team.awards({ /* put optional parameters here */ });
 ```  
 
-To fetch an ``Event``, use the method ``robotevents.events.get(sku)``. Replace ``sku`` with the event sku (ex. RE-VRC-22-7950).
+To fetch an ``Event``, use the method ``robotevents.events.get(sku)``. Replace ``sku`` with the event sku (ex. RE-V5RC-24-5557).
 ```javascript
-const event = await robotevents.events.get('RE-VRC-22-7950');
+const event = await robotevents.events.get('RE-V5RC-24-5557');
 const teams = await event.teams({ /* put optional parameters here */ });
 const skills = await event.skills({ /* put optional parameters here */ });
 const awards = await event.awards({ /* put optional parameters here */ });
